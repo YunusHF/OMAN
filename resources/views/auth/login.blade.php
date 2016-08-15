@@ -126,12 +126,16 @@
                                     </div>                          
                                 </div>
 
-                                <div class="g-recaptcha col-md-6 col-sm-6" data-sitekey="6Lc_0f4SAAAAAF9ZA_d7Dxi9qRbPMMNW-tLSvhe6" style="margin:0 auto;"></div>
-                                <button>Login</div>
+                                <!-- <div class="g-recaptcha col-md-6 col-sm-6" data-sitekey="6Lc_0f4SAAAAAF9ZA_d7Dxi9qRbPMMNW-tLSvhe6" style="margin:0 auto;"></div> -->
+                                <button>Login</button>
                                 <div class="col-md-3 col-sm-2">
                                     &nbsp;
                                 </div>
                             </form>
+                            <div class="col-md-6">
+                                <h6>OR</h6>
+                                <button class="btn btn-small" style="background-color: blue;"><a href="register" style="color: #fff">REGISTER</a></button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
