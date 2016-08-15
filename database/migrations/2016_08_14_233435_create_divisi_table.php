@@ -10,9 +10,12 @@ class CreateDivisiTable extends Migration
      *
      * @return void
      */
-    public function up()
+  public function up()
     {
-        //
+        Schema::create('ref.divisi', function (Blueprint $table) {
+            $table->increments('id_divisi');
+            $table->string('divisi');
+        });
     }
 
     /**
@@ -22,6 +25,6 @@ class CreateDivisiTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('ref.divisi');
     }
 }
