@@ -3,18 +3,18 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJabatanTable extends Migration
+class CreateStatusKeluargaTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+   public function up()
     {
-        Schema::create('ref.jabatan', function (Blueprint $table) {
-            $table->increments('id_jabatan');
-            $table->string('jabatan');
+        Schema::create('ref.status_keluarga', function (Blueprint $table) {
+            $table->increments('id_status_keluarga');
+            $table->string('status_keluarga');
         });
     }
 
@@ -25,6 +25,6 @@ class CreateJabatanTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ref.jabatan');
+        Schema::drop('ref.status_keluarga');
     }
 }

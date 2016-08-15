@@ -10,9 +10,12 @@ class CreatePendidikanTerakhirTable extends Migration
      *
      * @return void
      */
-    public function up()
+   public function up()
     {
-        //
+        Schema::create('ref.pendidikan_terakhir', function (Blueprint $table) {
+            $table->increments('id_pendidikan_terakhir');
+            $table->string('pendidikan_terakhir');
+        });
     }
 
     /**
@@ -22,6 +25,6 @@ class CreatePendidikanTerakhirTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('ref.pendidikan_terakhir');
     }
 }
