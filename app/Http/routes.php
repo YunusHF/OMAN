@@ -23,15 +23,13 @@ Route::get('contoh', function() {
 Route::auth();
 
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
 
-Route::get('halamanutama', function(){
-	return view('halamanutama');
-});
+Route::get('halamanutama', 'HomeController@index');
 
-Route::resource('/biodata', 'BiodataController');
+Route::resource('biodata', 'BiodataController');
 
-Route::post('/inputbiodata', 'BiodataController@store');
+Route::post('inputbiodata', 'BiodataController@store');
 
 Route::get('coba', function(){
 	// $orders = \App\Order::all();
