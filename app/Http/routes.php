@@ -65,6 +65,49 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('presensi', 'PresensiController@index');
 
 Route::post('tampil_presensi', 'PresensiController@TampilPresensi');
