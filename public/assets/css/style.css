@@ -121,7 +121,7 @@ ul.navbar-nav {
 	text-transform: uppercase;
 }
 
-ul.navbar-nav li a { padding: 23px 20px; background: #fff; border-top: 5px solid #fff; color: #5d5d5d; }
+ul.navbar-nav li a { padding: 5px 20px; background: #fff; border-top: 0px solid #fff; color: #5d5d5d; }
 ul.navbar-nav li.active a { background: #f8f8f8; border-color: #2e7144; color: #5d5d5d; }
 
 ul.navbar-nav li a:hover, ul.navbar-nav li a:focus { background: #2e7144; border-color: #2e7144; color: #fff; outline: 0; }
@@ -525,4 +525,8 @@ input[type="text"], [type="password"] {
 
 .icon-bundar:hover, .icon-bundar:active, .icon-bundar:focus {
   background: #69bd50;
+}
+
+.panel {
+    margin-top: 30px;
 }
