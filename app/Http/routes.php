@@ -62,3 +62,5 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 	// }
 	echo $relasi->no_kartu_keluarga .  "<br>";
 });
+
+Route::get('datadiri', 'BiodataController@datadiri');

@@ -1,4 +1,4 @@
-@extends('/.layouts.tampilan')
+@extends('biodata.tampilan')
 
 @section('konten')
 		<!-- Form Login-->

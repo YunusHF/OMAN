@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 use App\Karyawan;
 use App\Keluarga;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class BiodataController extends Controller
 {
+    
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -111,5 +119,16 @@ class BiodataController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function datadiri(){
+        $auth = Auth::user()->email;
+         $datadiri = Karyawan::where('email', '=', $auth)->get();
+        //$datadiri = Karyawan::all();
+        return view('biodata.datadiri', array('datadiri' => $datadiri));
+        // echo $auth;
+        // echo $datadiri;
+        // echo Auth::user()->email;
+         //dd($datadiri);
     }
 }
