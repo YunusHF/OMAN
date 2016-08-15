@@ -18,9 +18,20 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/');
-        }
+           // // if (User::where('aktivasi', '=', 'aktif') {
+           // //  return redirect('/');
+           // //  } else{
+           // //       return redirect('login');
+           // //  }
+           //  $aktif = Auth::user()->aktivasi;
+           //  if (User::where($aktif, '=', 'aktif')){
+           //      return redirect('/');
+           //  }else{
+           //      return redirect('login');
+           //  }
+            return redirect('halamanutama');
 
+        }
         return $next($request);
     }
 }
