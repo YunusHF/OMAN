@@ -23,15 +23,13 @@ Route::get('contoh', function() {
 Route::auth();
 
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
 
-Route::get('halamanutama', function(){
-	return view('halamanutama');
-});
+Route::get('halamanutama', 'HomeController@index');
 
-Route::resource('/biodata', 'BiodataController');
+Route::resource('biodata', 'BiodataController');
 
-Route::post('/inputbiodata', 'BiodataController@store');
+Route::post('inputbiodata', 'BiodataController@store');
 
 Route::get('coba', function(){
 	// $orders = \App\Order::all();
@@ -64,3 +62,29 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 });
 
 Route::get('datadiri', 'BiodataController@datadiri');
+
+Route::get('presensi', 'PresensiController@index');
+
+Route::post('tampil_presensi', 'PresensiController@TampilPresensi');
+
+Route::post('presensi/masuk', 'SubmitPresensiController@PresensiMasuk');
+
+Route::put('presensi/pulang/{email}', 'PresensiPulangController@PresensiPulang');
+
+Route::get('cetak_pdf', function() {
+	return view('/home');
+});
+
+Route::get('lembur', 'LemburController@index');
+
+Route::get('ajukan_lembur', 'LemburController@lembar_pengajuan');
+
+Route::post('ajukan_lembur', 'LemburController@pengajuan');
+
+Route::get('lembur_admin', 'LemburController@index');
+
+Route::put('lembur_admin', 'LemburController@persetujuan_admin');
+
+Route::get('rekap_lembur', 'LemburController@rekapan');
+
+Route::get('penilaian_kinerja', 'PenilaianKinerjaController@index');

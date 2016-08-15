@@ -45,28 +45,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url('/home') }}"">Office Management PT. Nufaza</a>
+                    <a class="navbar-brand" href="{{ url('/halamanutama') }}"">Office Management PT. Nufaza</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="top-navbar-1">
                     <ul class="nav navbar-nav navbar-right">
-                        
-                        <li>
-                            <a href="portfolio.html"><i class="fa fa-user"></i><br>Profil Karyawan</a>
-                        </li>
-                        <li>
-                            <a href="services.html"><i class="fa fa-tasks"></i><br>Proyek Yang Dikerjakan</a>
-                        </li>
-                        @if (!Auth::guest())
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->nama }} <span class="caret"></span>
-                            </a>
+                        <!-- Authentication Links -->
+                        @if (Auth::guest())
+                            <li>
+                                <a href="{{ url('/portofoio') }}"><i class="fa fa-user"></i><br>Profil Karyawan</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/proyek') }}"><i class="fa fa-tasks"></i><br>Proyek Yang Dikerjakan</a>
+                            </li>
+                            <li><a href="{{ url('/login') }}"><i class="fa fa-users"></i><br>Login</a></li>
+                            <li><a href="{{ url('/register') }}"><i class="fa fa-user-plus"></i><br>Register</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fa fa-user"></i><br>
+                                    {{ Auth::user()->nama }} <span class="caret"></span>
+                                </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                </ul>
+                            </li>
                         @endif
                     </ul>
                 </div>
