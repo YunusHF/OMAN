@@ -61,6 +61,10 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 	echo $relasi->no_kartu_keluarga .  "<br>";
 });
 
+
+
+
+
 Route::get('presensi', 'PresensiController@index');
 
 Route::post('tampil_presensi', 'PresensiController@TampilPresensi');
