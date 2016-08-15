@@ -1,8 +1,8 @@
 @extends('layouts.tampilan')
 
-@if (Auth::user()->aktivasi = 'aktif')
-@section('konten')
 
+@section('konten')
+@if (Auth::user()->aktivasi = 'aktif')
 <div class="presentation-container">
 	        <div class="container">
 	            <div class="row">
@@ -39,7 +39,7 @@
 					            	</div>
 					            	<div class="col-md-2">
 					            		<div class="icon-bundar">
-					            			<a href="lembur"><i class="fa fa-clock-o"></i><br>Lembur</a>
+					            			<a href="lembur"><i class="fa fa-coffee"></i><br>Lembur</a>
 					            		</div>
 					            	</div>
 					            	<div class="col-md-2">
@@ -79,7 +79,7 @@
 	            </div>
 	        </div>
 	    </div>
-@endsection
 @else
 	<h1>Anda Belom Aktif</h1>
 @endif
+@endsection
