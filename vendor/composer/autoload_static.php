@@ -270,6 +270,8 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
         'CreateJabatanTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_233530_create_jabatan_table.php',
         'CreateKaryawanTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_100606_create_karyawan_table.php',
         'CreateKeluargaTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_100559_create_keluarga_table.php',
+
+
         'CreateLemburTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_074152_create_lembur_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePendidikanTerakhirTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_233603_create_pendidikan_terakhir_table.php',
