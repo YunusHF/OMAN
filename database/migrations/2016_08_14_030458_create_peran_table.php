@@ -12,7 +12,7 @@ class CreatePeranTable extends Migration
      */
     public function up()
     {
-        Schema::create('peran', function (Blueprint $table) {
+        Schema::create('ref.peran', function (Blueprint $table) {
             $table->increments('id_peran');
             $table->string('peran');
         });
@@ -25,6 +25,6 @@ class CreatePeranTable extends Migration
      */
     public function down()
     {
-        Schema::drop('peran');
+        Schema::drop('ref.peran');
     }
 }
