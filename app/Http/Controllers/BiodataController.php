@@ -10,7 +10,6 @@ use App\User;
 use App\Http\Requests;
 use App\Divisi;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class BiodataController extends Controller
 {
