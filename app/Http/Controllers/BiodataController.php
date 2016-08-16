@@ -8,10 +8,27 @@ use App\Karyawan;
 use App\Keluarga;
 use App\User;
 use App\Http\Requests;
+use App\Divisi;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BiodataController extends Controller
 {
+
+
+    public function ceklogin(){
+        if(!Auth::guest()){
+             $aktivasi = Auth::user()->aktivasi;
+             return view('halamanutama', array('aktivasi'=>$aktivasi));
+            //return view('halamanutama');
+        }else{
+            return view('auth.login');
+        }
+        // $aktivasi = Auth::user()->aktivasi;
+        // // dd($aktivasi);
+        // return view('halamanutama', array('aktivasi'=>$aktivasi));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,9 +46,11 @@ class BiodataController extends Controller
      */
     public function create()
     {
-        return view('biodata.create');
+        $divisi = \App\Divisi::all();
+        return view('biodata.create')->withDivisi($divisi);
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *

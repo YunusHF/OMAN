@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::resource('/', 'BiodataController@ceklogin');
 
 Route::get('contoh', function() {
 	return view('contoh');
@@ -26,6 +24,19 @@ Route::auth();
 // Route::get('/home', 'HomeController@index');
 
 Route::get('halamanutama', 'HomeController@index');
+
+Route::get('jajal', function(){
+	// $orders = \App\Order::all();
+	// foreach($orders as $order){
+	// 	echo $order->nama . ". Ordered by" . $order->customer->nama . "<br />";
+	// }
+	$jajal = \App\Divisi::all();
+	foreach($jajal as $jajal){
+	echo $jajal->divisi;
+	// echo $jajal->karyawan->email;
+	}
+});
+
 
 Route::resource('biodata', 'BiodataController');
 
@@ -62,6 +73,9 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 });
 
 Route::get('datadiri', 'BiodataController@datadiri');
+
+Route::get('biodata', 'BiodataController@create');
+
 
 
 
