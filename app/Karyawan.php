@@ -10,7 +10,7 @@ class Karyawan extends Model
     protected $primaryKey = 'id_karyawan';
 
     protected $fillable = ['nama', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'no_hp', 'email',
-    						'pendidikan_terakhir', 'tanggal_ijazah', 'status_perkawinan', 'nomor_kartu_keluarga', 'jumlah_anak', 'divisi', 'jabatan',
+    						'pendidikan_terakhir_id', 'tanggal_ijazah', 'status_perkawinan', 'nomor_kartu_keluarga', 'jumlah_anak', 'divisi_id', 'jabatan',
     						'tanggal_mulai_kerja', 'tanggal_keluar', 'skype', 'no_ktp', 'npwp', 'foto'];
 
     public $timestamps = false;
@@ -22,4 +22,10 @@ class Karyawan extends Model
 	public function divisi() {
 		return $this->belongsTo('App\Divisi');
 	}
+
+    public function pendidikan_terakhir() {
+        return $this->belongsTo('App\PendidikanTerakhir');
+    }
+
+
 }
