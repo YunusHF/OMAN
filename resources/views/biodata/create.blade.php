@@ -1,4 +1,4 @@
-@extends('/.layouts.tampilan')
+@extends('layouts.tampilan')
 
 @section('konten')
 		<!-- Form Login-->
@@ -151,7 +151,14 @@
 	            				<div class="container">
 	            					<div class="row">
 	            						<div class="col-md-2"><p>Divisi</p></div>
-			            				<div class="col-md-3"><p><input type="text" name="divisi"><br></p></div>
+			            				<div class="col-md-9">
+	            							<select name="divisi">
+	            								$divisi = Divisi::a
+	            								@foreach($divisi as $divisi)
+	            									<option value="{{ $divisi->id_divisi }}">{{ $divisi->divisi }}</option>
+	            								@endforeach
+	            							</select>
+	            						</div>
 			            				<div class="col-md-2"><p>Jabatan</p></div>
 			            				<div class="col-md-4"><p><input type="text" name="jabatan"></p></div>
 	            					</div>
