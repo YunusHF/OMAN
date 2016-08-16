@@ -18,4 +18,8 @@ class Karyawan extends Model
     public function keluarga() {
 		return $this->hasOne('App\Keluarga', 'nomor_kartu_keluarga');
 	}
+
+	public function divisi() {
+		return $this->belongsTo('App\Divisi');
+	}
 }

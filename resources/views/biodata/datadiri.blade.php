@@ -1,4 +1,4 @@
-@extends('biodata.tampilan')
+@extends('layouts.tampilan')
   
   @section('konten')  	
     	<div class="services-container">
