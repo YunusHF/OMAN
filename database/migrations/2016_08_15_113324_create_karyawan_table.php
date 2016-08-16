@@ -15,7 +15,6 @@ class CreateKaryawanTable extends Migration
         Schema::create('karyawan', function (Blueprint $table) {
             $table->increments('id_karyawan');
             $table->string('nama');
-            $table->string('no_induk_pegawai');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('status_perkawinan');
@@ -29,14 +28,14 @@ class CreateKaryawanTable extends Migration
             $table->integer('divisi_id')->unsigned();
             $table->foreign('divisi_id')->references('id_divisi')->on('ref.divisi');
             $table->date('tanggal_mulai_kerja');
-            $table->date('tanggal_keluar');
+            $table->date('tanggal_keluar')->nullable();
             $table->string('skype')->nullable();
             $table->string('npwp')->nullable();
             $table->string('no_ktp');
             $table->integer('pendidikan_terakhir_id')->unsigned();
             $table->foreign('pendidikan_terakhir_id')->references('id_pendidikan_terakhir')->on('ref.pendidikan_terakhir');
             $table->date('tanggal_ijazah');
-            $table->string('nomor_kartu_keluarga')->unsigned();
+            $table->string('nomor_kartu_keluarga')->unsigned()->nullable();
             $table->foreign('nomor_kartu_keluarga')->references('no_kartu_keluarga')->on('keluarga');
             $table->timestamps();
         });

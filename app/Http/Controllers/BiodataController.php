@@ -49,7 +49,8 @@ class BiodataController extends Controller
     public function create()
     {
         $divisi = \App\Divisi::all();
-        return view('biodata.create')->withDivisi($divisi);
+        $pendidikan_terakhir = \App\PendidikanTerakhir::all();
+        return view('biodata.create')->withDivisi($divisi)->withPendidikanTerakhir($pendidikan_terakhir);
     }
 
     
@@ -61,12 +62,13 @@ class BiodataController extends Controller
      */
     public function store(Request $request)
     {
-        Keluarga::create([
-                'kepala_keluarga' => $request->get('kepala_keluarga'),
-                'no_kartu_keluarga' => $request->get('no_kartu_keluarga')
+        // Keluarga::create([
+        //         'kepala_keluarga' => $request->get('kepala_keluarga'),
+        //         'no_kartu_keluarga' => $request->get('no_kartu_keluarga')
+        // 'nomor_kartu_keluarga' => $request->get('no_kartu_keluarga'),
 
-            ]);
-    
+        //     ]);
+
         Karyawan::create([
                 'nama' => $request->get('nama'),
                 'tempat_lahir' => $request->get('tempat_lahir'),
@@ -74,13 +76,13 @@ class BiodataController extends Controller
                  'alamat' => $request->get('alamat'),
                 'no_hp' => $request->get('no_hp'),
                 'email' => $request->get('email'),
-                'pendidikan_terakhir' => $request->get('pendidikan_terakhir'),
+                'pendidikan_terakhir_id' => $request->get('pendidikan_terakhir'),
                 'tanggal_ijazah' => $request->get('tanggal_ijazah'),
                 'status_perkawinan' => $request->get('status_perkawinan'),
-                'nomor_kartu_keluarga' => $request->get('no_kartu_keluarga'),
+                
                 'jumlah_anak' => $request->get('jumlah_anak'),
-                'divisi' => $request->get('divisi'),
-                'jabatan' => $request->get('jabatan'),
+                'divisi_id' => $request->get('divisi_id'),
+                // 'jabatan_id' => $request->get('jabatan'),
                 'tanggal_mulai_kerja' => $request->get('tanggal_mulai_kerja'),
                 'tanggal_keluar' => $request->get('tanggal_keluar'),
                 'skype' => $request->get('skype'),
@@ -88,7 +90,7 @@ class BiodataController extends Controller
                 'npwp' => $request->get('npwp'),
                 'foto' => $request->get('foto'),
             ]);
-         return redirect('home');   
+         return redirect('/');   
      }
 
     /**
@@ -137,8 +139,11 @@ class BiodataController extends Controller
     }
      public function datadiri(){
         $auth = Auth::user()->email;
+        // $data = Karyawan::get('email');
+
         $datadiri = Karyawan::where('email', '=', $auth)->get();
         //$datadiri = Karyawan::all();
+        // return view('biodata.datadiri', array('data' => $data))
         return view('biodata.datadiri', array('datadiri' => $datadiri));
         // echo $auth;
         // echo $datadiri;

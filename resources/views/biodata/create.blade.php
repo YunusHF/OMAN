@@ -63,16 +63,9 @@
 	            						<div class="col-md-2"><p>Pendidikan Terakhir</p></div>
 	            						<div class="col-md-10">
 	            							<select name="pendidikan_terakhir">
-	            								<option value="volvo">SD</option>
-	            								<option value="volvo">SMP</option>
-	            								<option value="volvo">SMA</option>
-	            								<option value="volvo">D1</option>
-	            								<option value="volvo">D2</option>
-	            								<option value="volvo">D3</option>
-	            								<option value="volvo">D4</option>
-	            								<option value="volvo">S1</option>
-	            								<option value="volvo">S2</option>
-	            								<option value="volvo">S3</option>
+	            								@foreach($pendidikan_terakhir as $pendidikan_terakhir)
+	            									<option value="{{ $pendidikan_terakhir->id_pendidikan_terakhir }}">{{$pendidikan_terakhir->pendidikan_terakhir }}</option>
+	            								@endforeach
 	            							</select><br><br>
 	            						</div>
 	            					</div>
@@ -98,16 +91,16 @@
 	            						<div class="col-md-2"><p>Status Perkawinan <small>(harus diisi)</small></p></div>
 	            						<div class="col-md-9">
 	            							<select name="status_perkawinan">
-	            								<option value="volvo">Kawin</option>
-	            								<option value="volvo">Belum Kawin</option>
-	            								<option value="volvo">Janda</option>
-	            								<option value="volvo">Duda</option>
+	            								<option value="kawin">Kawin</option>
+	            								<option value="belumkawin">Belum Kawin</option>
+	            								<option value="janda">Janda</option>
+	            								<option value="janda">Duda</option>
 	            							</select>
 	            						</div>
 	            					</div>
 	            				</div>
 	            			</div>
-	            			<div class="form-group">
+	            			<!-- <div class="form-group">
 	            				<div class="container">
 	            					<div class="row">
 	            						<div class="col-md-2"><p>No Kartu Keluarga</p></div>
@@ -122,7 +115,7 @@
 	            						<div class="col-md-10"><input type="text" name="kepala_keluarga"><br><br></div>
 	            					</div>
 	            				</div>
-	            			</div>
+	            			</div> -->
 	            			<div class="form-group">
 	            				<div class="container">
 	            					<div class="row">
@@ -152,15 +145,14 @@
 	            					<div class="row">
 	            						<div class="col-md-2"><p>Divisi</p></div>
 			            				<div class="col-md-9">
-	            							<select name="divisi">
-	            								$divisi = Divisi::a
+	            							<select name="divisi_id">
 	            								@foreach($divisi as $divisi)
 	            									<option value="{{ $divisi->id_divisi }}">{{ $divisi->divisi }}</option>
 	            								@endforeach
 	            							</select>
 	            						</div>
-			            				<div class="col-md-2"><p>Jabatan</p></div>
-			            				<div class="col-md-4"><p><input type="text" name="jabatan"></p></div>
+			            				<!-- <div class="col-md-2"><p>Jabatan</p></div>
+			            				<div class="col-md-4"><p><input type="text" name="jabatan"></p></div> -->
 	            					</div>
 	            				</div>	            			
 	            			</div>
