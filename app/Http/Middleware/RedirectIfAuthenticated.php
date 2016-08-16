@@ -29,7 +29,7 @@ class RedirectIfAuthenticated
            //  }else{
            //      return redirect('login');
            //  }
-            return redirect('halamanutama');
+            return redirect('/');
 
         }
         return $next($request);

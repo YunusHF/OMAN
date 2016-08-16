@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('/', 'BiodataController@ceklogin');
+Route::get('/', 'HomeController@index');
 
 Route::get('contoh', function() {
 	return view('contoh');
@@ -72,9 +72,7 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 	echo $relasi->no_kartu_keluarga .  "<br>";
 });
 
-Route::get('datadiri', 'BiodataController@datadiri');
-
-Route::get('biodata', 'BiodataController@create');
+// Route::get('datadiri', 'BiodataController@datadiri');
 
 
 
