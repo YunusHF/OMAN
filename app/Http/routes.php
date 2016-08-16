@@ -145,3 +145,16 @@ Route::put('lembur_admin', 'LemburController@persetujuan_admin');
 Route::get('rekap_lembur', 'LemburController@rekapan');
 
 Route::get('penilaian_kinerja', 'PenilaianKinerjaController@index');
+
+
+
+
+
+
+
+
+
+Route::resource('inventaris', 'InventarisController');
+
+Route::post('inventaris/store', 'InventarisController@store');
+
