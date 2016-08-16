@@ -1,6 +1,6 @@
 @extends('layouts.tampilan')
-  
-  @section('konten')  	
+  @section('konten')
+
     	<div class="services-container">
 	        <div class="container">
 	            <div class="row">
@@ -41,7 +41,10 @@
 				            			</div>
 				            			<div class="col-md-9">
 				            				<div class="col-md-5"><p>Status</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>{{$datadiri->status_perkawinan}}</p></div>	
-				            			</div>		
+				            			</div>
+				            			<div class="col-md-9">
+				            				<div class="col-md-5"><p>Divisi</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>{{$datadiri->divisi->divisi}}</p></div>	
+				            			</div>				
 				            			<!-- <div class="col-md-9">
 				            				<div class="col-md-5"><p>Istri</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>Milladina Noer Hanifah</p></div>
 				            			</div>
@@ -57,6 +60,40 @@
 	            </div>
 	        </div>
 	     </div>
+
+<!-- <div class="panel panel-default"">
+<div class="panel-body">
+<div class="panel-heading">
+	<h1>Silahkan Isi Biodata Anda</h1>
+</div>
+<div class="panel-body">
+	<h4><a href="biodata/create">Klid Disini Untuk Tambah Data</h4>
+</div>
+</div>
+</div> -->
+<!-- <div class="presentation-container">
+    <div class="container">
+        <div class="row">
+        	<div class="panel panel-default">
+                <div class="panel-heading"><h4><strong>Anda Belum Mengisi Biodata</strong></h4></div>
+
+                <div class="panel-body">
+                    <div class="col-md-12">
+                    	<h3>Silahkan Mengisi Biodata Anda Terlebih Dahulu</h3>
+                    	<h2><a href="biodata/create"><i class="fa fa-hand-o-down" aria-hidden="true"></i><br>Klik Disini</a></h2>
+                    </div>
+                    
+		            </div>
+
+	            	<div class="col-md-6">
+	            		
+	            	</div>
+	            </div>
+	        </div>
+        </div>
+    </div>
+</div> -->
+
 @endsection
 
 	 
