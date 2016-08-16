@@ -7,10 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CreateAnggotaKeluargaTable' => $baseDir . '/database/migrations/2016_08_15_111334_create_anggota_keluarga_table.php',
+    'CreateAsalInventarisTable' => $baseDir . '/database/migrations/2016_08_16_100047_create_asal_inventaris_table.php',
     'CreateDivisiTable' => $baseDir . '/database/migrations/2016_08_14_233435_create_divisi_table.php',
     'CreateHariLiburKerjaTable' => $baseDir . '/database/migrations/2016_08_15_074005_create_hari_libur_kerja_table.php',
+    'CreateInventarisTable' => $baseDir . '/database/migrations/2016_08_16_100035_create_inventaris_table.php',
     'CreateJabatanTable' => $baseDir . '/database/migrations/2016_08_14_233530_create_jabatan_table.php',
-    'CreateKaryawan1Table' => $baseDir . '/database/migrations/2016_08_15_113319_create_karyawan1_table.php',
     'CreateKaryawanTable' => $baseDir . '/database/migrations/2016_08_15_113324_create_karyawan_table.php',
     'CreateKeluargaTable' => $baseDir . '/database/migrations/2016_08_14_100559_create_keluarga_table.php',
     'CreateLemburTable' => $baseDir . '/database/migrations/2016_08_15_074152_create_lembur_table.php',
@@ -18,6 +19,7 @@ return array(
     'CreatePendidikanTerakhirTable' => $baseDir . '/database/migrations/2016_08_14_233603_create_pendidikan_terakhir_table.php',
     'CreatePeranTable' => $baseDir . '/database/migrations/2016_08_14_030458_create_peran_table.php',
     'CreatePresensiTable' => $baseDir . '/database/migrations/2016_08_15_073543_Create_Presensi_Table.php',
+    'CreateStatusInventarisTable' => $baseDir . '/database/migrations/2016_08_16_100056_create_status_inventaris_table.php',
     'CreateStatusKeluargaTable' => $baseDir . '/database/migrations/2016_08_15_104138_create_status_keluarga_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

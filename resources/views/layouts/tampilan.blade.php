@@ -45,7 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url('/halamanutama') }}"">Office Management PT. Nufaza</a>
+                    <a class="navbar-brand" href="{{ url('/') }}"">Office Management PT. Nufaza</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="top-navbar-1">
@@ -53,7 +53,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li>
-                                <a href="{{ url('/portofoio') }}"><i class="fa fa-user"></i><br>Profil Karyawan</a>
+                                <a href="{{ url('/portofolio') }}"><i class="fa fa-user"></i><br>Profil Karyawan</a>
                             </li>
                             <li>
                                 <a href="{{ url('/proyek') }}"><i class="fa fa-tasks"></i><br>Proyek Yang Dikerjakan</a>
