@@ -170,7 +170,11 @@ Route::get('rekap_lembur', 'LemburController@rekapan');
 
 Route::get('penilaian_kinerja', 'PenilaianKinerjaController@index');
 
+Route::get('penilaian_kinerja/ubah_nilai/{email}', 'PenilaianKinerjaController@ubah_nilai');
 
+Route::put('penilaian_kinerja/ubah_nilai/{email}/{id}', 'PenilaianKinerjaController@simpan_nilai');
+
+Route::post('penilaian_kinerja/ubah_nilai/buat_nilai/{email}', 'PenilaianKinerjaController@buat_nilai');
 
 
 
