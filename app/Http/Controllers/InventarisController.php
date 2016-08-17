@@ -20,6 +20,7 @@ class InventarisController extends Controller
     public function index()
     {
         //
+        return redirect('inventaris/show');
     }
 
     /**
@@ -30,8 +31,15 @@ class InventarisController extends Controller
     public function create()
     {
         //
+        $peran = Auth::user()->id_peran;
+        if ($peran == 1 or $peran == 2) {
+            $show = true;
+        }
+        else{
+            $show = false;
+        }
         $email = Auth::user()->email;
-        return view('inventaris.form', array('email' => $email));
+        return view('inventaris.form', array('email' => $email, 'show' => $show));
     }
 
     /**
@@ -58,6 +66,15 @@ class InventarisController extends Controller
     public function show($id)
     {
         //
+        $peran = Auth::user()->id_peran;
+        if ($peran == 1 or $peran == 2) {
+            $show = true;
+        }
+        else{
+            $show = false;
+        }
+        $data = Inventaris::get()->all();
+        return view('inventaris.tampil', array('show' => $show))->with('data', $data);
     }
 
     /**
