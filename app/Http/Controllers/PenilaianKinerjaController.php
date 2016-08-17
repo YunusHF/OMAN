@@ -26,26 +26,72 @@ class PenilaianKinerjaController extends Controller
     {
         if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
             $data_user = user::all();
+            // $query = ['email'=>Auth::user()->email];
+            $data_nilai = penilaian_kinerja::all();
             $data_aspek = aspek_kinerja::all();
-            dd($data_aspek);
-            return view('penilaian_kinerja_admin', array('data_user'=>$data_user, 'data_aspek'=>$data_aspek));
+            return view('kinerja.tampil_admin', array('data_user'=>$data_user, 'data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
         }
         else {
-            return view('penilaian_kinerja_user');
+        	$query = ['email'=>Auth::user()->email];
+        	$data_nilai = penilaian_kinerja::where($query)->get();
+            $data_aspek = aspek_kinerja::all();
+            return view('kinerja.tampil_user',  array('data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
         }
     }
 
-    public function get($email)
+    public function ubah_nilai($email)
     {
-        if(Auth::user()->admin) {
+    	if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
             $query = ['email'=>$email];
-            $query2 = ['email_kinerja'=>$email];
-            $data_user = user::where($query)->get();
-            $kinerja = penilaian_kinerja::where($query2)->get();
-            return view('ubah_penilaian_kinerja_admin', array('data_user'=>$data_user, 'kinerja'=>$kinerja));
+            $data_nilai = penilaian_kinerja::where($query)->get();
+            $data_aspek = aspek_kinerja::all();
+            return view('kinerja.ubah_admin', array('email'=>$email, 'data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
         }
         else {
-            return view('penilaian_kinerja_user');
+            $query = ['email'=>Auth::user()->email];
+        	$data_nilai = penilaian_kinerja::where($query)->get();
+            $data_aspek = aspek_kinerja::all();
+            return view('kinerja.tampil_user',  array('data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
+        }
+    }
+
+    public function simpan_nilai(Request $request, $email, $id)
+    {
+    	if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
+
+	        $penilaian_kinerja = penilaian_kinerja::find($id);
+
+	        $penilaian_kinerja->tanggal_kinerja = $request['tanggal_kinerja'];
+
+	        $penilaian_kinerja->keterangan_kinerja = $request['keterangan_kinerja'];
+
+	        $penilaian_kinerja->nilai_kinerja = $request['nilai_kinerja'];
+
+	        // dd($penilaian_kinerja);
+	        $penilaian_kinerja->update();
+
+	        return redirect('/penilaian_kinerja/ubah_nilai/'.$email);
+        }
+        else {
+            $query = ['email'=>Auth::user()->email];
+        	$data_nilai = penilaian_kinerja::where($query)->get();
+            $data_aspek = aspek_kinerja::all();
+            return view('kinerja.tampil_user',  array('data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
+        }
+    }
+
+    public function buat_nilai(Request $request, $email)
+    {
+        if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
+            $data = $request->all();
+            penilaian_kinerja::create($data);
+            return redirect('/penilaian_kinerja/ubah_nilai/'.$email);
+        }
+        else {
+            $query = ['email'=>Auth::user()->email];
+        	$data_nilai = penilaian_kinerja::where($query)->get();
+            $data_aspek = aspek_kinerja::all();
+            return view('kinerja.tampil_user',  array('data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
         }
     }
 }
