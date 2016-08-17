@@ -64,7 +64,7 @@
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="Belum_Jadi"><i class="fa fa-book"></i><br>Inventaris</a>
+				            			<a href="inventaris"><i class="fa fa-book"></i><br>Inventaris</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">

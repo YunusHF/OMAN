@@ -158,3 +158,4 @@ Route::resource('inventaris', 'InventarisController');
 
 Route::post('inventaris/store', 'InventarisController@store');
 
+Route::get('inventaris/show', 'InventarisController@show');
