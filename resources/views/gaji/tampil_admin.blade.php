@@ -7,10 +7,13 @@
         	<h3>Rekap Gaji Karyawan</h3>
         </div>
         <div class="panel-body">
+        	<div class="col-md-12" style="text-align:left;">
         	@foreach($data_user as $user)
-        	<div class="col-md-10" style="text-align:left;">
-        		<p style="font-size:18px;"><strong>{{ $user->nama }}</strong></p>
-        		<table style="width:50%;">
+        		<p style="font-size:18px;"><strong>{{ $user->nama }}&nbsp;&nbsp;</strong><a href="{{url('/gaji/ubah_jumlah',$email)}}" class="btn btn-info" type="submit" style="margin-top: 0px; background-color: #2e7144; color: white; padding-right: 10px;">Ubah</a></p>
+        	@endforeach
+        	</div>
+        	<div class="col-md-5" style="text-align:left;">
+        		<table class="table table-responsive" style="width:70%;">
         			<caption>Penerimaan</caption>
         			<thead>
         				<tr>
@@ -27,7 +30,7 @@
         						
         					?>
 	        				@foreach($data_gaji as $gaji)
-		        				@if($gaji->uraian_gaji_id == $uraian->id_uraian_gaji && $gaji->email == $user->email)
+		        				@if($gaji->uraian_gaji_id == $uraian->id_uraian_gaji)
 			        				<tr>
 			        					<td style="font-size:14px;">{{$uraian->nama_uraian_gaji}}</td>
 			        					<td style="font-size:14px;">Rp. {{$gaji->jumlah}}</td>
@@ -49,7 +52,9 @@
 	        			@endforeach
         			</tbody>
         		</table>
-        		<table style="width:50%;">
+        	</div>
+        	<div class="col-md-5" style="text-align:left;">
+        		<table class="table table-responsive" style="width:70%;">
 					<caption>Potongan</caption>
 					<thead>
 						<tr>
@@ -65,7 +70,7 @@
         						$terisi = false;
         					?>
 	        				@foreach($data_gaji as $gaji)
-	        					@if($gaji->uraian_gaji_id == $uraian->id_uraian_gaji && $gaji->email == $user->email)
+	        					@if($gaji->uraian_gaji_id == $uraian->id_uraian_gaji)
 			        				<tr>
 			        					<td style="font-size:14px;">{{$uraian->nama_uraian_gaji}}</td>
 			        					<td style="font-size:14px;">Rp. {{$gaji->jumlah}}</td>
@@ -86,16 +91,17 @@
 	        			@endforeach
 					</tbody>
 				</table>
-				<p style="font-size:16px;">Total Penerimaan :<strong>Rp. {{ $total_penerimaan }}</strong></p>
+        	</div>
+        	<div class="col-md-2">
+        		
+        	</div>
+        	<div class="col-md-12" style="text-align:left;">
+        		<p style="font-size:16px;">Total Penerimaan :<strong>Rp. {{ $total_penerimaan }}</strong></p>
 				<p style="font-size:16px;">Total Potongan :<strong>Rp. {{ $total_potongan }}</strong></p>
 				<p style="font-size:16px;">Gaji Bersih :<strong>Rp. {{ $total_penerimaan - $total_potongan }}</strong></p>
 				<br><br><br><br>
-        	</div>
-        	<div class="col-md-2">
-        		<a href="gaji/ubah_jumlah/{{$user->email}}" class="btn btn-info" type="submit" style="margin-top: 0px; background-color: #2e7144; color: white; padding-right: 10px;">Ubah</a>
-        	</div>
         	<hr>
-        	@endforeach
+        	</div>
         </div>
     </div>
 </div>
