@@ -84,9 +84,9 @@
 		        		@endforeach
 					</tbody>
 				</table>
-				<p style="font-size:16px;">Total Penerimaan :<strong>Rp. {{ $total_penerimaan }}</strong></p>
-				<p style="font-size:16px;">Total Potongan :<strong>Rp. {{ $total_potongan }}</strong></p>
-				<p style="font-size:16px;">Gaji Bersih :<strong>Rp. {{ $total_penerimaan - $total_potongan }}</strong></p>
+				<p style="font-size:14px;">Total Penerimaan :<strong>Rp. {{ $total_penerimaan }}</strong></p>
+				<p style="font-size:14px;">Total Potongan :<strong>Rp. {{ $total_potongan }}</strong></p>
+				<p style="font-size:14px;">Gaji Bersih :<strong>Rp. {{ $total_penerimaan - $total_potongan }}</strong></p>
 				<br><br><br><br>
         	</div>
         	<hr>
