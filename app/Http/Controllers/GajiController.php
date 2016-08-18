@@ -28,13 +28,29 @@ class GajiController extends Controller
             $data_user = user::all();
             $data_gaji = Gaji::all();
             $data_uraian = uraian_gaji::all();
-            return view('gaji.tampil_admin', array('data_user' => $data_user, 'data_gaji' => $data_gaji, 'data_uraian' => $data_uraian));
+            return view('gaji.gaji_karyawan', array('data_user' => $data_user, 'data_gaji'=>$data_gaji, 'data_uraian'=>$data_uraian));
         }
         else{
             $query = ['email'=>Auth::user()->email];
             $data_gaji = Gaji::where($query)->get();
             $data_uraian = uraian_gaji::all();
             return view('gaji.tampil_user', array('data_gaji' => $data_gaji, 'data_uraian' => $data_uraian));
+        }
+    }
+
+    public function lihat_detail($email)
+    {
+        if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
+            $data_user = user::where('email', '=', $email)->get();
+            $data_gaji = Gaji::where('email', '=', $email)->get();
+            $data_uraian = uraian_gaji::all();
+            return view('gaji.tampil_admin', array('email'=> $email, 'data_user' => $data_user, 'data_gaji'=>$data_gaji, 'data_uraian'=>$data_uraian));
+        }
+        else {
+            $query = ['email'=>Auth::user()->email];
+            $data_gaji = Gaji::where($query)->get();
+            $data_uraian = uraian_gaji::all();
+            return view('gaji.tampil_user',  array('data_gaji'=>$data_gaji, 'data_uraian'=>$data_uraian));
         }
     }
 
@@ -84,7 +100,7 @@ class GajiController extends Controller
             $query = ['email'=>Auth::user()->email];
             $data_gaji = Gaji::where($query)->get();
             $data_uraian = uraian_gaji::all();
-            return view('kinerja.tampil_user',  array('data_gaji'=>$data_gaji, 'data_uraian'=>$data_uraian));
+            return view('gaji.tampil_user',  array('data_gaji'=>$data_gaji, 'data_uraian'=>$data_uraian));
         }
     }
 }
