@@ -29,49 +29,67 @@
     }
 
     $alpa = 0;
+
+    $tahun_awal = 9999;
+    foreach($tampil as $_tampil){
+        $tahun_presensi = strtotime($_tampil->tanggal_presensi);
+        if($tahun_awal > date("Y", $tahun_presensi)) {
+            $tahun_awal = date("Y", $tahun_presensi);
+        }
+    }
+
+    // $arr_bulan = array("Pilih Bulan");
+    // $i = 0;
+    // foreach($tampil as $_tampil){
+    //     $bulan_presensi = strtotime($_tampil->tanggal_presensi);
+    //     if($arr_bulan[$i] != date("Y-m", $bulan_presensi)) {
+    //         $arr_bulan[$i+1] = date("Y-m", $bulan_presensi);
+    //         $i++;
+    //     }
+    // }
 ?>
 @extends('layouts.tampilan')
 
 @section('konten')
 <div class="col-md-2">
     <div class="panel panel-default"">
-        <div class="panel-heading">
-            <h4>Rekap Absen</h4>
+        <div class="panel-heading" style="background-color: #b0e0a1;">
+            <h4>Menu</h4>
         </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <form action="tampil_presensi" method="post" accept-charset="utf-8">
-                        <label>Pilih Tahun:</label>
-                        <select class="form-control" name="tahun">
-                            <option value="2015">2015</option>
-                            <option value="2016" selected="selected">2016</option>
-                        </select>
-                        <label>Pilih Bulan:</label>
-                        <select class="form-control" name="bulan">
-                            <option value="01">Januari</option>
-                            <option value="02">Februari</option>
-                            <option value="03">Maret</option>
-                            <option value="04">April</option>
-                            <option value="05">Mei</option>
-                            <option value="06">Juni</option>
-                            <option value="07">Juli</option>
-                            <option value="08" selected="selected">Agustus</option>
-                            <option value="09">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
-                        </select>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit">Lihat Rekap</button>
-                    </form>
-                </div>
+        <div class="panel-body">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{$tahun}} &nbsp <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    @for($i=date("Y"); $i>=$tahun_awal; $i--)
+                        <li><a href="/tampil_presensi/{{$email}}/{{$i}}/{{$bulan}}">{{$i}}</a></li>
+                    @endfor
+                </ul>
             </div>
+             <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{bulanIndo($bulan)}} &nbsp <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/01">Januari</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/02">Februari</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/03">Maret</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/04">April</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/05">Mei</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/06">Juni</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/07">Juli</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/08">Agustus</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/09">September</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/10">Oktober</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/11">November</a></li>
+                    <li><a href="/tampil_presensi/{{$email}}/{{$tahun}}/12">Desember</a></li>
+                </ul>
+            </div>
+            <a href="{{url('/cetak_pdf')}}"><button type="button" class="btn"><i class="fa fa-print"></i><br>Cetak PDF</button></a>
+            <a href="/tampil_presensi/{{$tahun}}/{{$bulan}}"><button type="button" class="btn btn-warning" style="margin-top: 30px;">Kembali</button></a>
         </div>
     </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-10">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color: #b0e0a1;">
             <h4>Absensi Bulan {{ bulanIndo($bulan)." ".$tahun }}</h4>
         </div>
         <div class="panel-body">
@@ -102,7 +120,11 @@
                             @if($lemburan == true)
                                 <td>Lembur</td>
                             @else
-                                <td>{{ $presensi->status_presensi }}</td>
+                                @foreach($status_presensi as $status)
+                                    @if($presensi->status_presensi_id == $status->id_status_presensi)
+                                        <td>{{ $status->status_presensi }}</td>
+                                    @endif
+                                @endforeach
                             @endif
                             <td>{{ $presensi->jam_masuk }}</td>
                             <td>{{ $presensi->jam_pulang }}</td>
@@ -145,7 +167,7 @@
                             @elseif ( $kerja == true )
                                 <?php
                                 if ($date<strtotime("now")) {
-                                    echo "<td>alpa</td>";
+                                    echo "<td>Tanpa Izin</td>";
                                 }
                                 else echo "<td>belum masuk</td>";
                                 ?>
@@ -167,15 +189,6 @@
                 @endfor
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
-<div class="col-md-2">
-    <div class="panel panel-default">
-        <div class="panel-heading"><h4>Cetak</h4></div>
-            <div class="panel-body">
-                <button type="button"><a href="{{url('/cetak_pdf')}}" style="color: #fff;"><i class="fa fa-print"></i><br>Cetak PDF</a></button>
-            </div>
         </div>
     </div>
 </div>

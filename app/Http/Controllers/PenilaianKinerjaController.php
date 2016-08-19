@@ -22,7 +22,7 @@ class PenilaianKinerjaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($tahun)
     {
         if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
             $data_user = user::all();
@@ -32,10 +32,11 @@ class PenilaianKinerjaController extends Controller
             return view('kinerja.tampil_admin', array('data_user'=>$data_user, 'data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
         }
         else {
+            // dd($tahun);
         	$query = ['email'=>Auth::user()->email];
         	$data_nilai = penilaian_kinerja::where($query)->get();
             $data_aspek = aspek_kinerja::all();
-            return view('kinerja.tampil_user',  array('data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
+            return view('kinerja.tampil_user',  array('data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek, 'tahun'=>$tahun));
         }
     }
 

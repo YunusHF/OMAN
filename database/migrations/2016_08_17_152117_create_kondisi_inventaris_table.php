@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHariLiburKerjaTable extends Migration
+class CreateKondisiInventarisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateHariLiburKerjaTable extends Migration
      */
     public function up()
     {
-        Schema::create('hari_libur_kerja', function (Blueprint $table) {
-            $table->increments('id_libur');
-            $table->date('tanggal_libur');
-            $table->string('keterangan_libur', 255)->nullable();
+        Schema::create('ref.kondisi_inventaris', function (Blueprint $table){
+            $table->increments('id_kondisi_inventaris');
+            $table->string('kondisi_inventaris');
         });
     }
 
@@ -26,6 +25,6 @@ class CreateHariLiburKerjaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('hari_libur_kerja');
+        Schema::drop('ref.kondisi_inventaris');
     }
 }

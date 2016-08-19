@@ -59,7 +59,7 @@
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="penilaian_kinerja"><i class="fa fa-trophy"></i><br>Penilaian<br>Kinerja</a>
+				            			<a href="penilaian_kinerja/{{date('Y')}}"><i class="fa fa-trophy"></i><br>Penilaian<br>Kinerja</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">

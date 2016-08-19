@@ -1,7 +1,17 @@
 @extends('layouts.tampilan')
 
 @section('konten')
-<div class="col-md-12">
+<div class="col-md-2">
+	<div class="panel panel-default">
+        <div class="panel-heading">
+        	<h3>Menu</h3>
+        </div>
+        <div class="panel-body">
+			<a href="{{url('/penilaian_kinerja', date('Y'))}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
+        </div>
+    </div>
+</div>
+<div class="col-md-10">
     <div class="panel panel-default">
         <div class="panel-heading">
         	<h3>Ubah Penilaian</h3>
@@ -57,7 +67,7 @@
 	        	</table>
         	</div>
 	        <div class="col-md-2">
-				<a href="/penilaian_kinerja" style="color: white;"><button class="btn btn-primary" type="button" style="margin-top: 0px;">Kembali</button></a>
+				<a href="/penilaian_kinerja/{{date('Y')}}" style="color: white;"><button class="btn btn-primary" type="button" style="margin-top: 0px;">Kembali</button></a>
 			</div>
         </div>
     </div>

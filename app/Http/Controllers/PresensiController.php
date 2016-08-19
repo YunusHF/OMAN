@@ -12,6 +12,8 @@ use App\presensi;
 use App\user;
 use App\hari_libur_kerja;
 use App\lembur;
+use App\status_presensi;
+use App\presensi_pulang;
 
 class PresensiController extends Controller
 {
@@ -62,6 +64,7 @@ class PresensiController extends Controller
         foreach ($sekali_presensi as $cek) {
             if ($cek['tanggal_presensi'] == $date) {
                 $id_presensi = $cek['id_presensi'];
+                $aktifitas = $cek['aktifitas_presensi'];
                 $jam_sudah_masuk = $cek['jam_masuk'];
                 if ($cek['jam_pulang'] != null) {
                     $jam_sudah_pulang = $cek['jam_pulang'];
@@ -90,26 +93,58 @@ class PresensiController extends Controller
             'id_presensi'=>$id_presensi, 
             'libur'=>$keterangan_libur, 
             'jam_sudah_masuk'=>$jam_sudah_masuk, 
-            'jam_sudah_pulang'=>$jam_sudah_pulang)
+            'jam_sudah_pulang'=>$jam_sudah_pulang,
+            'aktifitas_presensi'=>$aktifitas
+            )
         );
     }
 
-    public function TampilPresensi(Request $request) {
-        // untuk ambil bulan dan tahun agar bisa dioper ke tampil_presensi
-        $tahun = $request['tahun'];
-        $bulan = $request['bulan'];
+    public function TampilPresensi($tahun, $bulan) {
+        if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
+            $tahun = date("Y");
+            $bulan = date("m");
+            $user = user::all();
+            return view('presensi.tampil_admin', array(
+                'user'=>$user,
+                'tahun'=>$tahun,
+                'bulan'=>$bulan
+                )
+            );
+        }
+        else {
+            // untuk mengambil data lembur
+            $query = ["email"=>Auth::user()->email, "persetujuan_id"=>1];
+            $data_lembur = lembur::where($query)->get();
 
-        // untuk mengambil data lembur
-        $query = ["email"=>Auth::user()->email, "persetujuan_lembur"=>"sudah disetujui"];
-        $data_lembur = lembur::where($query)->get();
+            // untuk mengambil status presensi
+            $status_presensi = status_presensi::all();
 
-        // untuk mengecek hari libur
-        $hari_libur = hari_libur_kerja::all();
+            // untuk mengecek hari libur
+            $hari_libur = hari_libur_kerja::all();
 
-        $tampilPresensi = presensi::where('email', '=', Auth::user()->email)->get();
-        return view('presensi.tampil', array('tampil'=>$tampilPresensi, 'tahun'=>$tahun, 'bulan'=>$bulan, 'hari_libur'=>$hari_libur, 'data_lembur'=>$data_lembur));
+            $tampilPresensi = presensi::where('email', '=', Auth::user()->email)->get();
+            return view('presensi.tampil_user', array('tampil'=>$tampilPresensi, 'tahun'=>$tahun, 'bulan'=>$bulan, 'hari_libur'=>$hari_libur, 'data_lembur'=>$data_lembur, 'status_presensi'=>$status_presensi));
+        }
     }
 
+    public function TampilPresensiAdmin($email, $tahun, $bulan) {
+        if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
+            $query = ["email"=>$email, "persetujuan_id"=>1];
+            $data_lembur = lembur::where($query)->get();
+
+            // untuk mengambil status presensi
+            $status_presensi = status_presensi::all();
+
+            // untuk mengecek hari libur
+            $hari_libur = hari_libur_kerja::all();
+
+            $tampilPresensi = presensi::where('email', '=', $email)->get();
+            return view('presensi.tampil_user_admin', array('email'=>$email, 'tampil'=>$tampilPresensi, 'tahun'=>$tahun, 'bulan'=>$bulan, 'hari_libur'=>$hari_libur, 'data_lembur'=>$data_lembur, 'status_presensi'=>$status_presensi));
+        }
+        else {
+            return redirect('/presensi');
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -148,9 +183,9 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function isi_aktifitas(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -160,9 +195,18 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_presensi'=>'required'
+        ]);
+        $pulang = presensi_pulang::find($request['id_presensi']);
+
+        $pulang->aktifitas_presensi = $request['aktifitas_presensi'];
+
+        $pulang->update();
+
+        return redirect('/presensi');
     }
 
     /**
