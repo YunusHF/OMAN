@@ -30,7 +30,7 @@
 		return $bulanIndo;
 	}
 
-	$arr_bulan = array("Pilih Tahun");
+	$arr_tahun = array("Pilih Tahun");
 	$i = 0;
     foreach($data_nilai as $nilai){
 		$tahun_kinerja = strtotime($nilai->tanggal_kinerja);

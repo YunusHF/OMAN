@@ -3,33 +3,24 @@
 @section('konten')
 <div class="col-md-2">
     <div class="panel panel-default">
-	    <div class="panel-heading">
-	    	<h4>Pengajuan Dinas</h4>
+	    <div class="panel-heading" style="background-color: #b0e0a1;">
+	    	<h4>Menu</h4>
 	    </div>
 	    <div class="panel-body">
-	    	<button type="button" style="background-color: blue;"><a href="{{url('/ajukan_dinas')}}" style="color: #fff;"><i class="fa fa-envelope"></i><br>Ajukan dinas</a></button>
-	    </div>
+            <button type="button"><a href="#" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</a></button>
+            <a href="{{url('/')}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
+        </div>
     </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-10">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color: #b0e0a1;">
         	<h4>Dinas</h4>
         </div>
         <div class="panel-body">
         	<div class="col-md-12">
-        		<h4>Tidak ada pengajuan dinas</h4>
+        		<h4>Tidak ada jadwal dinas</h4>
         	</div>
-        </div>
-    </div>
-</div>
-<div class="col-md-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-        	<h4>Rekap Dinas</h4>
-        </div>
-        <div class="panel-body">
-            <button type="button"><a href="{{url('/rekap_dinas')}}" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</a></button>
         </div>
     </div>
 </div>

@@ -61,6 +61,7 @@ class PresensiController extends Controller
         $id_presensi = 0;
         $jam_sudah_masuk = '';
         $jam_sudah_pulang = '';
+        $aktifitas = "";
         foreach ($sekali_presensi as $cek) {
             if ($cek['tanggal_presensi'] == $date) {
                 $id_presensi = $cek['id_presensi'];
@@ -69,7 +70,9 @@ class PresensiController extends Controller
                 if ($cek['jam_pulang'] != null) {
                     $jam_sudah_pulang = $cek['jam_pulang'];
                 }
-                else $jam_sudah_pulang = '--:--:--';
+                else {
+                    $jam_sudah_pulang = '--:--:--';
+                }
             }
         }
 

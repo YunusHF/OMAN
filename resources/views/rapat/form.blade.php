@@ -4,17 +4,18 @@
 @if($show)
 	<div class="col-md-2">
 	    <div class="panel panel-default">
-	        <div class="panel-heading">
+	        <div class="panel-heading" style="background-color: #b0e0a1;">
 	        	<h4>Menu</h4>
 	        </div>
 	        <div class="panel-body">
-		    	<button type="button" style="background-color: blue;"><a href="{{url('/rapat/show')}}" style="color: #fff;"><i class="fa fa-table"></i><br>Lihat Daftar Rapat</a></button>
+		    	<button type="button" style="background-color: blue;"><a href="#" style="color: #fff;"><i class="fa fa-table"></i><br>Lihat Daftar Rapat</a></button>
+	            <a href="{{url('/')}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
 		    </div>
 	    </div>
 	</div>
 	<div class="col-md-10">
 		<div class="panel panel-default">
-			<div class="panel-heading">
+			<div class="panel-heading" style="background-color: #b0e0a1;">
 	        	<h4>Form Rapat</h4>
 	        </div>
 	        <div class="panel-body">

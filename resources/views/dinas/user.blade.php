@@ -3,7 +3,7 @@
 @section('konten')
 <div class="col-md-8">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color: #b0e0a1;">
         	<h4>Jadwal Dinas</h4>
         </div>
         <div class="panel-body">
@@ -149,7 +149,7 @@
 </div>
 <div class="col-md-2">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color: #b0e0a1;">
         	<h4>Rekap Dinas</h4>
         </div>
         <div class="panel-body">

@@ -32,9 +32,10 @@ class GajiController extends Controller
         }
         else{
             $query = ['email'=>Auth::user()->email];
+            $data_user = user::find(Auth::user()->id_user);
             $data_gaji = Gaji::where($query)->get();
             $data_uraian = uraian_gaji::all();
-            return view('gaji.tampil_user', array('data_gaji' => $data_gaji, 'data_uraian' => $data_uraian));
+            return view('gaji.tampil_user', array('data_gaji' => $data_gaji, 'data_uraian' => $data_uraian, 'user'=>$data_user));
         }
     }
 

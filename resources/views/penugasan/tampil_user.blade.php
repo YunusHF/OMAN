@@ -6,7 +6,7 @@
         <div class="row">
         	<div class="col-md-12">
         		<div class="status-pengajuan">
-        		<h2><strong>Cek Status Pengajuan Dinas</strong></h2>
+        		<h2><strong>Cek Status Jadwal Dinas</strong></h2>
         		<hr>
         			<div class="form-group">
         				<div class="container">
