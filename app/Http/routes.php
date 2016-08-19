@@ -91,11 +91,11 @@ Route::get('gaji', function() {
 });
 
 Route::get('cuti', function() {
-	return view('pengembangan');
+	return view('cuti.form_cuti');
 });
 
 Route::get('manajemen_proyek', function() {
-	return view('pengembangan');
+	return view('proyek.form');
 });
 
 Route::get('to_do_list', function() {
