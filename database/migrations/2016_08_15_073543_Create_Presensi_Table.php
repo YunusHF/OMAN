@@ -18,8 +18,9 @@ class CreatePresensiTable extends Migration
             $table->date('tanggal_presensi');
             $table->time('jam_masuk')->nullable();
             $table->time('jam_pulang')->nullable();
-            $table->string('status_presensi', 255);
-            $table->string('aktifitas_presensi', 255)->nullable();
+            $table->integer('status_presensi', 255);
+            $table->text('aktifitas_presensi', 255)->nullable();
+            $table->integer('lokasi_presensi_id')->nullable();
         });
     }
 

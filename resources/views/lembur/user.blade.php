@@ -3,17 +3,19 @@
 @section('konten')
 <div class="col-md-2">
     <div class="panel panel-default">
-	    <div class="panel-heading">
-	    	<h4>Pengajuan Lembur</h4>
+	    <div class="panel-heading" style="background-color: #b0e0a1;">
+	    	<h4>Menu</h4>
 	    </div>
 	    <div class="panel-body">
 	    	<button type="button" style="background-color: blue;"><a href="{{url('/ajukan_lembur')}}" style="color: #fff;"><i class="fa fa-envelope"></i><br>Ajukan lembur</a></button>
+	    	<button type="button"><a href="{{url('/rekap_lembur')}}" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</a></button>
+	    	<a href="{{url('/')}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
 	    </div>
     </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-10">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color: #b0e0a1;">
         	<h4>Lembur</h4>
         </div>
         <div class="panel-body">
@@ -24,7 +26,7 @@
         		@foreach($ada_lembur as $daftar_lembur)
         			@if($daftar_lembur->tanggal_lembur >= $tanggal_sekarang)
         				<?php $ada = 1; ?>
-        			@elseif($daftar_lembur->persetujuan_lembur == "belum disetujui")
+        			@elseif($daftar_lembur->persetujuan_id == 1)
         				<?php $belum = 1; ?>
         			@endif
         		@endforeach
@@ -40,7 +42,7 @@
 
         		@foreach($ada_lembur as $daftar_lembur)
         			@if($daftar_lembur->tanggal_lembur >= $tanggal_sekarang)
-	        			@if($daftar_lembur->persetujuan_lembur == "sudah disetujui")
+	        			@if($daftar_lembur->persetujuan_id == 2)
 		        			<div class="col-md-6">
 		        				<table class="table" style="text-align: left; border-style: none">
 		        					<caption><h4>{{ $daftar_lembur->uraian_lembur }}</h4></caption>
@@ -67,7 +69,7 @@
 		        			<div class="col-md-12">
 		        				
 		        			</div>
-	        			@elseif($daftar_lembur->persetujuan_lembur == "tidak disetujui")
+	        			@elseif($daftar_lembur->persetujuan_id == 3)
 		        			<div class="col-md-6">
 		        				<table class="table" style="text-align: left; border-style: none">
 		        					<caption><h4>{{ $daftar_lembur->uraian_lembur }}</h4></caption>
@@ -94,7 +96,7 @@
 		        			<div class="col-md-12">
 		        				
 		        			</div>
-		        		@elseif($daftar_lembur->persetujuan_lembur == "belum disetujui")
+		        		@elseif($daftar_lembur->persetujuan_id == 1)
 		        			<div class="col-md-6">
 		        				<table class="table" style="text-align: left; border-style: none">
 		        					<caption><h4>{{ $daftar_lembur->uraian_lembur }}</h4></caption>
@@ -115,15 +117,15 @@
 		        				</table>
 		        			</div>
 		        			<div class="col-md-6">
-		        				<h2 style="color: gray"><strong>BELUM DISETUJUI</strong></h2>
-		        				<h4 style="color: gray">Harap menghubungi admin untuk persetujuan</h4>
+		        				<h2 style="color: #F0AD4E"><strong>BELUM DISETUJUI</strong></h2>
+		        				<h4 style="color: #F0AD4E">Harap menghubungi admin untuk persetujuan</h4>
 		        			</div>
 		        			<div class="col-md-12">
 		        				
 		        			</div>
 		        		@endif
 		        	@elseif($daftar_lembur->tanggal_lembur < $tanggal_sekarang)
-		        		@if($daftar_lembur->persetujuan_lembur == "belum disetujui")
+		        		@if($daftar_lembur->persetujuan_id == 1)
 		        			<div class="col-md-6">
 		        				<table class="table" style="text-align: left; border-style: none">
 		        					<caption><h4>{{ $daftar_lembur->uraian_lembur }}</h4></caption>
@@ -144,8 +146,8 @@
 		        				</table>
 		        			</div>
 		        			<div class="col-md-6">
-		        				<h2 style="color: gray"><strong>BELUM DISETUJUI</strong></h2>
-		        				<h4 style="color: gray">Harap menghubungi admin untuk persetujuan</h4>
+		        				<h2 style="color: #F0AD4E"><strong>BELUM DISETUJUI</strong></h2>
+		        				<h4 style="color: #F0AD4E">Harap menghubungi admin untuk persetujuan</h4>
 		        			</div>
 		        			<div class="col-md-12">
 		        				
@@ -154,16 +156,6 @@
 	        		@endif
         		@endforeach
         	@endif
-        </div>
-    </div>
-</div>
-<div class="col-md-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-        	<h4>Rekap Lembur</h4>
-        </div>
-        <div class="panel-body">
-            <button type="button"><a href="{{url('/rekap_lembur')}}" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</a></button>
         </div>
     </div>
 </div>

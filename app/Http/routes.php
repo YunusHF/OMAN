@@ -82,9 +82,7 @@ Route::get('proyek', function() {
 	return view('pengembangan');
 });
 
-Route::get('penugasan', function() {
-	return view('pengembangan');
-});
+Route::get('penugasan', 'PenugasanController@index');
 
 Route::get('gaji', function() {
 	return view('pengembangan');
@@ -99,11 +97,14 @@ Route::get('manajemen_proyek', function() {
 });
 
 Route::get('to_do_list', function() {
-	return view('pengembangan');
-});
-
-Route::get('penilaian_kinerja', function() {
-	return view('pengembangan');
+	if(Auth::user()->id_peran == 1 || Auth::user()->id_peran == 2) {
+		$nama = Auth::user()->nama;
+		return view('todolist.tampil_admin', array('nama'=>$nama));
+	}
+	elseif(Auth::user()->id_peran == 3){
+		$nama = Auth::user()->nama;
+		return view('todolist.tampil_user', array('nama'=>$nama));
+	}
 });
 
 Route::get('inventaris', function() {
@@ -145,11 +146,15 @@ Route::get('cetak_pdf', function() {
 
 Route::get('presensi', 'PresensiController@index');
 
-Route::post('tampil_presensi', 'PresensiController@TampilPresensi');
+Route::get('tampil_presensi/{tahun}/{bulan}', 'PresensiController@TampilPresensi');
+
+Route::get('tampil_presensi/{email}/{tahun}/{bulan}', 'PresensiController@TampilPresensiAdmin');
 
 Route::post('presensi/masuk', 'SubmitPresensiController@PresensiMasuk');
 
 Route::put('presensi/pulang/{email}', 'PresensiPulangController@PresensiPulang');
+
+Route::put('presensi/isi_aktifitas', 'PresensiController@update');
 
 Route::get('lembur', 'LemburController@index');
 
@@ -164,7 +169,7 @@ Route::put('lembur_admin', 'LemburController@persetujuan_admin');
 Route::get('rekap_lembur', 'LemburController@rekapan');
 
 
-Route::get('penilaian_kinerja', 'PenilaianKinerjaController@index');
+Route::get('penilaian_kinerja/{tahun}', 'PenilaianKinerjaController@index');
 
 Route::get('penilaian_kinerja/ubah_nilai/{email}', 'PenilaianKinerjaController@ubah_nilai');
 
