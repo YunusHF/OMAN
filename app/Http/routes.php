@@ -233,3 +233,13 @@ Route::resource('inventaris', 'InventarisController');
 Route::post('inventaris/store', 'InventarisController@store');
 
 Route::get('inventaris/show', 'InventarisController@show');
+
+Route::get('gaji', 'GajiController@index');
+
+Route::get('gaji/tampil_admin/{email}', 'GajiController@lihat_detail');
+
+Route::get('gaji/ubah_jumlah/{email}', 'GajiController@ubah_nilai');
+
+Route::put('gaji/ubah_jumlah/{email}/{id}', 'GajiController@simpan_nilai');
+
+Route::post('gaji/ubah_jumlah/buat_nilai/{email}/{id}', 'GajiController@buat_nilai');
