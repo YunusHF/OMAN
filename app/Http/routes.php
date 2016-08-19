@@ -94,10 +94,6 @@ Route::get('cuti', function() {
 	return view('pengembangan');
 });
 
-Route::get('manajemen_rapat', function() {
-	return view('pengembangan');
-});
-
 Route::get('manajemen_proyek', function() {
 	return view('pengembangan');
 });
@@ -187,6 +183,14 @@ Route::resource('inventaris', 'InventarisController');
 Route::post('inventaris/store', 'InventarisController@store');
 
 Route::get('inventaris/show', 'InventarisController@show');
+
+Route::resource('rapat', 'RapatController');
+
+Route::post('rapat/store', 'RapatController@store');
+
+Route::get('rapat/show', 'RapatController@show');
+
+Route::get('rapat/detail_rapat', 'RapatController@lihat_detail');
 
 Route::get('gaji', 'GajiController@index');
 

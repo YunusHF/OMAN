@@ -44,7 +44,7 @@
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="manajemen_rapat"><i class="fa fa-users"></i><br>Manajemen<br>Rapat</a>
+				            			<a href="rapat"><i class="fa fa-users"></i><br>Manajemen<br>Rapat</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">

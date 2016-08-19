@@ -32,18 +32,24 @@
         			</tr>
         		</thead>
         		<tbody>
-        			@foreach ($data as $tampil)
-        				<tr>
-        					<td></td>
-        					<td>{{ $tampil['nama_barang'] }}</td>
-        					<td>{{ $tampil['jumlah_barang'] }}</td>
-        					<td>{{ $tampil['umur_ekonomis'] }}</td>
-        					<td>{{ $tampil['asal_inventaris_id'] }}</td>
-        					<td>{{ $tampil['tgl_beli'] }}</td>
-        					<td>{{ $tampil['tgl_tutupbuku'] }}</td>
-        					<td>{{ $tampil['status_inventaris_id'] }}</td>
-        				</tr>
-        			@endforeach
+                    @(!$data)
+                        <tr>
+                            <td colspan="8" style="text-align:center;">Maaf, Belum ada data</td>
+                        </tr>
+                    @else
+            			@foreach ($data as $tampil)
+            				<tr>
+            					<td></td>
+            					<td>{{ $tampil['nama_barang'] }}</td>
+            					<td>{{ $tampil['jumlah_barang'] }}</td>
+            					<td>{{ $tampil['umur_ekonomis'] }}</td>
+            					<td>{{ $tampil['asal_inventaris_id'] }}</td>
+            					<td>{{ $tampil['tgl_beli'] }}</td>
+            					<td>{{ $tampil['tgl_tutupbuku'] }}</td>
+            					<td>{{ $tampil['status_inventaris_id'] }}</td>
+            				</tr>
+            			@endforeach
+                    @endif
         		</tbody>
         	</table>
         </div>

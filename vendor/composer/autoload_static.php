@@ -278,6 +278,7 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
         'CreatePendidikanTerakhirTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_233603_create_pendidikan_terakhir_table.php',
         'CreatePeranTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_030458_create_peran_table.php',
         'CreatePresensiTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_073543_Create_Presensi_Table.php',
+        'CreateRapatTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_013132_create_rapat_table.php',
         'CreateStatusInventarisTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_16_100056_create_status_inventaris_table.php',
         'CreateStatusKeluargaTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_104138_create_status_keluarga_table.php',
         'CreateUraianGajiTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_17_045316_create_uraian_gaji_table.php',

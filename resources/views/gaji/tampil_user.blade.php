@@ -7,9 +7,11 @@
         	<h3>Rekap Gaji Karyawan</h3>
         </div>
         <div class="panel-body">
-        	<div class="col-md-10" style="text-align:left;">
+        	<div class="col-md-12" style="text-align:left;">
         		<p style="font-size:18px;"><strong>{{ Auth::user()->nama }}</strong></p>
-        		<table style="width:50%;">
+        	</div>
+        	<div class="col-md-5" style="text-align:left;">
+        		<table class="table table-responsive" style="width:70%;">
         			<caption>Penerimaan</caption>
         			<thead>
         				<tr>
@@ -46,8 +48,9 @@
 	        			@endforeach
         			</tbody>
         		</table>
-
-        		<table style="width:50%;">
+        	</div>
+        	<div class="col-md-5" style="text-align:left;">
+        		<table class="table table-responsive" style="width:70%;">
 					<caption>Potongan</caption>
 					<thead>
 						<tr>
@@ -84,6 +87,8 @@
 		        		@endforeach
 					</tbody>
 				</table>
+			</div>
+			<div class="col-md-12" style="text-align:left;">
 				<p style="font-size:14px;">Total Penerimaan :<strong>Rp. {{ $total_penerimaan }}</strong></p>
 				<p style="font-size:14px;">Total Potongan :<strong>Rp. {{ $total_potongan }}</strong></p>
 				<p style="font-size:14px;">Gaji Bersih :<strong>Rp. {{ $total_penerimaan - $total_potongan }}</strong></p>
