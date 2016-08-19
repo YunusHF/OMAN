@@ -271,6 +271,7 @@ class BiodataController extends Controller
     }
 
 
+
      public function datadiri(){
         $auth = Auth::user()->email;
        
