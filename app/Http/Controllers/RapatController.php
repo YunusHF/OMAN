@@ -8,10 +8,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use App\Inventaris;
+use App\Rapat;
 
-class InventarisController extends Controller
+class RapatController extends Controller
 {
+    //
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,9 +25,8 @@ class InventarisController extends Controller
     public function index()
     {
         //
-        return redirect('inventaris/show');
+        return redirect('rapat/show');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +43,7 @@ class InventarisController extends Controller
             $show = false;
         }
         $email = Auth::user()->email;
-        return view('inventaris.form', array('email' => $email, 'show' => $show));
+        return view('rapat.form', array('email' => $email, 'show' => $show));
     }
 
     /**
@@ -57,8 +57,8 @@ class InventarisController extends Controller
         //
         $email = Auth::user()->email;
         $data = $request->all();
-        Inventaris::create($data);
-        return view('inventaris.form', array('email' => $email));
+        Rapat::create($data);
+        return view('rapat.form', array('email' => $email));
     }
 
     /**
@@ -67,7 +67,8 @@ class InventarisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+	public function show()
     {
         //
         $peran = Auth::user()->id_peran;
@@ -77,8 +78,8 @@ class InventarisController extends Controller
         else{
             $show = false;
         }
-        $data = Inventaris::get()->all();
-        return view('inventaris.tampil', array('show' => $show))->with('data', $data);
+        $data = Rapat::get()->all();
+        return view('rapat.tampil', array('show' => $show))->with('data', $data);
     }
 
     /**
@@ -90,6 +91,15 @@ class InventarisController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    public function lihat_detail($request, $email, $id)
+    {
+        //
+        $email = Auth::user()->email;
+        $data = $request->all();
+        Rapat::create($data);
+        return view('rapat.detail_rapat', array('email' => $email));
     }
 
     /**

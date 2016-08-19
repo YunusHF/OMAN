@@ -89,15 +89,11 @@ Route::get('gaji', function() {
 });
 
 Route::get('cuti', function() {
-	return view('pengembangan');
-});
-
-Route::get('manajemen_rapat', function() {
-	return view('pengembangan');
+	return view('cuti.form_cuti');
 });
 
 Route::get('manajemen_proyek', function() {
-	return view('pengembangan');
+	return view('proyek.form');
 });
 
 Route::get('to_do_list', function() {
@@ -192,3 +188,21 @@ Route::resource('inventaris', 'InventarisController');
 Route::post('inventaris/store', 'InventarisController@store');
 
 Route::get('inventaris/show', 'InventarisController@show');
+
+Route::resource('rapat', 'RapatController');
+
+Route::post('rapat/store', 'RapatController@store');
+
+Route::get('rapat/show', 'RapatController@show');
+
+Route::get('rapat/detail_rapat', 'RapatController@lihat_detail');
+
+Route::get('gaji', 'GajiController@index');
+
+Route::get('gaji/tampil_admin/{email}', 'GajiController@lihat_detail');
+
+Route::get('gaji/ubah_jumlah/{email}', 'GajiController@ubah_nilai');
+
+Route::put('gaji/ubah_jumlah/{email}/{id}', 'GajiController@simpan_nilai');
+
+Route::post('gaji/ubah_jumlah/buat_nilai/{email}/{id}', 'GajiController@buat_nilai');
