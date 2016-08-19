@@ -125,35 +125,19 @@
 				        				<div class="col-md-9">
 				            				<div class="col-md-5"><p>Tanggal Ijazah</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>{{$datadiri->tanggal_ijazah}}</p></div>	
 				            			</div>
-
-				            			<div class="col-md-9">
-
-				            			<div class="col-md-5"><p>Anggota Keluarga</p></div><div class="col-md-1"><p>:</p></div>
-				            			</div>
-
-
-
-				            			<div class="col-md-9">
-				            			@foreach($anggota_keluarga as $anggota_keluarga)
-				            				<div class="col-md-5"></div>
-				            				@if ($anggota_keluarga->keluarga_id == $datadiri->keluarga_id)
-				            					<div class="col-md-6"><p>{{$anggota_keluarga->nama_anggota_keluarga}}</p></div>
-				            				@endif
-				            								
-
-				            			@endforeach
-				            			</div>
-
 				            			
 
-				            			<div class="col-md-9">
+				            			
 					            		
 					            		@if ($adakeluarga == true)
-
-					            			@foreach ($keluarga as $keluarga)
-					        
-					            				@if ($keluarga->no_kartu_keluarga == $datadiri->nomor_kartu_keluarga)
+					            		@foreach ($keluarga as $keluarga)
+					            		@if ($keluarga->no_kartu_keluarga == $datadiri->nomor_kartu_keluarga)
+					        				<div class="col-md-9">
 					            				<div class="col-md-5"><p>Nomor Kartu Keluarga</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>{{$datadiri->nomor_kartu_keluarga}}</p></div>
+					            			</div>
+					            			<div class="col-md-9">
+					            				<div class="col-md-5"><p>Nama Kepala Keluarga</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>{{$keluarga->kepala_keluarga}}</p></div>
+					            			</div>
 					            				@else
 
 					            				<h4>Tambah Anggota Keluarga</h4>
@@ -166,13 +150,34 @@
 					            			<h4>Buat Biodata Keluarga</h4>
 					            			<h5><a href="createkeluarga">Klik Disini</a></h5>
 					            		@endif
-					            		</div>
+
 				            			<!-- <div class="col-md-9">
 				            				<div class="col-md-5"><p>Istri</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>Milladina Noer Hanifah</p></div>
 				            			</div>
 				            			<div class="col-md-9">
 				            				<div class="col-md-5"><p>Anak</p></div><div class="col-md-1"><p>:</p></div><div class="col-md-6"><p>Azinudin Achzab</p><p>Raka Pratama Tiyarno</p><p>Muhammad Rasyid Hidayat</p></div>		            			
 					            		</div> -->
+				            			<div class="col-md-9">
+				            			@foreach($anggota_keluarga as $anggota_keluarga)
+				            				@if($anggota_keluarga->status_keluarga_id == '1')
+				            				<div class="col-md-5"><p>Suami</p></div>
+				            				<div class="col-md-1"><p>:</p></div>	
+				            				<div class="col-md-6"><p>{{$anggota_keluarga->nama_anggota_keluarga}}</p></div>
+
+				            				@elseif($anggota_keluarga->status_keluarga_id == '2')
+				            				<div class="col-md-5"><p>Istri</p></div>
+				            				<div class="col-md-1"><p>:</p></div>	
+				            				<div class="col-md-6"><p>{{$anggota_keluarga->nama_anggota_keluarga}}</p></div>
+
+				            				@elseif($anggota_keluarga->status_keluarga_id == '3')
+				            				<div class="col-md-5"><p>Anak</p></div>
+				            				<div class="col-md-1"><p>:</p></div>	
+				            				<div class="col-md-6"><p>{{$anggota_keluarga->nama_anggota_keluarga}}</p></div>
+
+				            				@endif
+				            			@endforeach
+				            			</div>
+
 					            		
 					            		<div class="col-md-10">
 					            			<hr>

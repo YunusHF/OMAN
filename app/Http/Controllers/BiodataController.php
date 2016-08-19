@@ -297,6 +297,7 @@ class BiodataController extends Controller
             $adakeluarga = true;
         }
         
+       
         //$datadiri = Karyawan::all();
         // return view('biodata.datadiri', array('data' => $data))
         return view('biodata.datadiri', array('datadiri' => $datadiri, 'adadata' => $adadata, 'divisi' => $divisi,
