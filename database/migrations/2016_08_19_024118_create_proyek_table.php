@@ -14,8 +14,8 @@ class CreateProyekTable extends Migration
     {
         Schema::create('proyek', function (Blueprint $table) {
             $table->increments('id_proyek');
-            $table->string('no_kartu_keluarga');
-            $table->string('kepala_keluarga');
+            $table->string('nama_proyek');
+            $table->string('project_manager');
         });    }
 
     /**
