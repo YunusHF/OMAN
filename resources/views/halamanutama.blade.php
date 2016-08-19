@@ -24,7 +24,7 @@
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="penugasan"><i class="fa fa-plane"></i><br>Penugasan/<br>Dinas</a>
+				            			<a href="dinas"><i class="fa fa-plane"></i><br>Penugasan/<br>Dinas</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">

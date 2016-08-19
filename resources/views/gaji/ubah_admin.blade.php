@@ -43,6 +43,7 @@
 			        		<button class="btn btn-info" type="submit" style="margin-top: 0px;">Masukkan</button>
 			        	</div>
 			    	</form>
+			    	<br>
 			    @endif
 			@else
 				<form action="buat_nilai/{{$email}}/{{$uraian->id_uraian_gaji}}" method="post" accept-charset="utf-8">
@@ -58,6 +59,7 @@
 		        		<button class="btn btn-info" type="submit" style="margin-top: 0px;">Masukkan</button>
 		        	</div>
 			    </form>
+			    <br>
 		    @endif
         @endforeach
 	        <div class="col-md-2">
