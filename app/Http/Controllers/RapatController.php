@@ -3,23 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
-use App\Karyawan;
-use App\Keluarga;
-use App\AnggotaKeluarga;
-use App\StatusKeluarga;
-use App\User;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use App\Rapat;
 
-class TambahKeluargaController extends Controller
+class RapatController extends Controller
 {
-
-     public function __construct()
+    //
+    public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -28,8 +25,8 @@ class TambahKeluargaController extends Controller
     public function index()
     {
         //
+        return redirect('rapat/show');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -37,9 +34,16 @@ class TambahKeluargaController extends Controller
      */
     public function create()
     {
-        $keluarga = \App\Keluarga::all();
-        $statuskeluarga = \App\StatusKeluarga::all();
-        return view('biodata.tambahkeluarga')->withStatusKeluarga($statuskeluarga);   
+        //
+        $peran = Auth::user()->id_peran;
+        if ($peran == 1 or $peran == 2) {
+            $show = true;
+        }
+        else{
+            $show = false;
+        }
+        $email = Auth::user()->email;
+        return view('rapat.form', array('email' => $email, 'show' => $show));
     }
 
     /**
@@ -51,6 +55,10 @@ class TambahKeluargaController extends Controller
     public function store(Request $request)
     {
         //
+        $email = Auth::user()->email;
+        $data = $request->all();
+        Rapat::create($data);
+        return view('rapat.form', array('email' => $email));
     }
 
     /**
@@ -59,9 +67,19 @@ class TambahKeluargaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+	public function show($id)
     {
         //
+        $peran = Auth::user()->id_peran;
+        if ($peran == 1 or $peran == 2) {
+            $show = true;
+        }
+        else{
+            $show = false;
+        }
+        $data = Rapat::get()->all();
+        return view('rapat.tampil', array('show' => $show))->with('data', $data);
     }
 
     /**
@@ -73,6 +91,15 @@ class TambahKeluargaController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    public function lihat_detail($request, $email, $id)
+    {
+        //
+        $email = Auth::user()->email;
+        $data = $request->all();
+        Rapat::create($data);
+        return view('rapat.detail_rapat', array('email' => $email));
     }
 
     /**

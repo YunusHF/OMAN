@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusPerkawinanTable extends Migration
+class CreateKeluargaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateStatusPerkawinanTable extends Migration
      */
     public function up()
     {
-        Schema::create('ref.status_perkawinan', function (Blueprint $table) {
-            $table->increments('id_status_perkawinan');
-            $table->string('status_perkawinan');
-        });
-    }
+        Schema::create('keluarga', function (Blueprint $table) {
+            $table->string('no_kartu_keluarga')->unique();
+            $table->string('kepala_keluarga');
+        });    }
 
     /**
      * Reverse the migrations.
@@ -25,6 +24,6 @@ class CreateStatusPerkawinanTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ref.status_perkawinan');
+       Schema::drop('keluarga');
     }
 }

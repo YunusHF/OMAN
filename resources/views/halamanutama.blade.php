@@ -44,7 +44,7 @@
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="manajemen_rapat"><i class="fa fa-users"></i><br>Manajemen<br>Rapat</a>
+				            			<a href="rapat"><i class="fa fa-users"></i><br>Manajemen<br>Rapat</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">
@@ -80,26 +80,6 @@
         </div>
     </div>
 @else
-	<div class="presentation-container">
-    <div class="container">
-        <div class="row">
-        	<div class="panel panel-default">
-                <div class="panel-heading"><h4><strong>Akun Anda Belum Aktif</strong></h4></div>
-
-                <div class="panel-body">
-                    <div class="col-md-12">
-                    	<h3>Mohon Konfirmasi Ke Operator Untuk Mengaktifkan Akun Anda</h3>
-                    </div>
-                    
-		            </div>
-
-	            	<div class="col-md-6">
-	            		
-	            	</div>
-	            </div>
-	        </div>
-        </div>
-    </div>
-</div>
+	<h1>Anda Belom Aktif</h1>
 @endif
 @endsection

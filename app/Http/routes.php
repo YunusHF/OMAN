@@ -74,52 +74,6 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 
 Route::get('datadiri', 'BiodataController@datadiri');
 
-
-Route::get('cetakbiodata', function(){
-	$auth = Auth::user()->email;
-       
-
-        $datadiri = App\Karyawan::where('email', '=', $auth)->get();
-        if($datadiri->isEmpty()){
-            $adadata = false;
-            $datadiri = "";
-        }else{
-            $adadata = true;
-        }
-
-       
-
-        $divisi = App\Divisi::all();
-        $pendidikan_terakhir = App\PendidikanTerakhir::all();
-        $status_perkawinan = App\StatusPerkawinan::all();
-        $jabatan = App\Jabatan::all();
-        $anggota_keluarga = App\AnggotaKeluarga::all();
-        $keluarga = App\Keluarga::all();
-         if($keluarga->isEmpty()){
-            $adakeluarga = false;
-        }else{
-            $adakeluarga = true;
-        }
-	$pdf_biodata = PDF::loadview('biodata.datadiri',  array('datadiri' => $datadiri, 'adadata' => $adadata, 'divisi' => $divisi,
-                        'pendidikan_terakhir' => $pendidikan_terakhir, 'status_perkawinan' => $status_perkawinan, 'jabatan' => $jabatan, 'anggota_keluarga' => $anggota_keluarga, 'keluarga' => $keluarga, 'adakeluarga' => $adakeluarga));
-	return $pdf_biodata->download('biodata.pdf');
-});
-
-Route::get('createkeluarga', 'BiodataController@createkeluarga');
-
-Route::post('inputkeluarga', 'BiodataController@store_keluarga');
-
-Route::resource('kartukeluarga', 'KartuKeluargaController');
-
-Route::resource('tambahkeluarga', 'TambahKeluargaController');
-
-Route::resource('todolist', 'TodoListController');
-
-
-
-
-
-
 Route::get('portofolio', function() {
 	return view('pengembangan');
 });
@@ -137,10 +91,6 @@ Route::get('gaji', function() {
 });
 
 Route::get('cuti', function() {
-	return view('pengembangan');
-});
-
-Route::get('manajemen_rapat', function() {
 	return view('pengembangan');
 });
 
@@ -233,6 +183,14 @@ Route::resource('inventaris', 'InventarisController');
 Route::post('inventaris/store', 'InventarisController@store');
 
 Route::get('inventaris/show', 'InventarisController@show');
+
+Route::resource('rapat', 'RapatController');
+
+Route::post('rapat/store', 'RapatController@store');
+
+Route::get('rapat/show', 'RapatController@show');
+
+Route::get('rapat/detail_rapat', 'RapatController@lihat_detail');
 
 Route::get('gaji', 'GajiController@index');
 

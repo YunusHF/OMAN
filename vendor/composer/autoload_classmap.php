@@ -23,6 +23,7 @@ return array(
     'CreatePendidikanTerakhirTable' => $baseDir . '/database/migrations/2016_08_14_233603_create_pendidikan_terakhir_table.php',
     'CreatePeranTable' => $baseDir . '/database/migrations/2016_08_14_030458_create_peran_table.php',
     'CreatePresensiTable' => $baseDir . '/database/migrations/2016_08_15_073543_Create_Presensi_Table.php',
+    'CreateRapatTable' => $baseDir . '/database/migrations/2016_08_19_013132_create_rapat_table.php',
     'CreateProyekTable' => $baseDir . '/database/migrations/2016_08_19_024118_create_proyek_table.php',
     'CreateStatusKeluargaTable' => $baseDir . '/database/migrations/2016_08_15_104138_create_status_keluarga_table.php',
     'CreateStatusPerkawinanTable' => $baseDir . '/database/migrations/2016_08_18_041853_create_status_perkawinan_table.php',
