@@ -80,6 +80,10 @@
         </div>
     </div>
 @else
-	<h1>Anda Belom Aktif</h1>
+<div class="panel panel-default">
+	    <div class="panel-heading" style="background-color: #b0e0a1;">
+			<h1>Anda Belom Aktif</h1>
+		</div>
+</div>
 @endif
 @endsection
