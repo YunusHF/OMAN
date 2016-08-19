@@ -13,6 +13,6 @@ class presensi_masuk extends Model
     	'email', 
     	'tanggal_presensi', 
     	'jam_masuk', 
-    	'status_presensi'
+    	'status_presensi_id'
     ];
 }

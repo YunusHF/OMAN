@@ -28,6 +28,7 @@ class LemburController extends Controller
     {
         // untuk mengambil nama si User(karena belum ada tabel karyawan, jadi saya pakai tabel user dulu)
         $data_user = user::where('email','=', Auth::user()->email)->get();
+        $user = user::all();
 
         //cek kalau user sudah melakukan presensi
         $ada_lembur = lembur::where('email', '=', Auth::user()->email)->get();
@@ -42,7 +43,7 @@ class LemburController extends Controller
         if(Auth::user()->id_peran == 3)
             return view('lembur.user', array('ada_lembur'=>$ada_lembur, 'data_user'=>$data_user, 'tanggal_sekarang'=>$tanggal_sekarang));
         elseif(Auth::user()->id_peran == 1 OR Auth::user()->id_peran == 2)
-            return view('lembur.admin',  array('cek_lembur'=>$cek_lembur));
+            return view('lembur.admin',  array('cek_lembur'=>$cek_lembur, 'user'=>$user));
     }
 
     /**
@@ -71,7 +72,7 @@ class LemburController extends Controller
             'jam_mulai' => 'required', 
             'jam_selesai' => 'required',
             'uraian_lembur' => 'required',
-            'persetujuan_lembur' => 'required'
+            // 'persetujuan_id' => 'required'
         ]);
 
         // ngisi ke table lembur lewat model App\lembur
@@ -81,7 +82,7 @@ class LemburController extends Controller
             'jam_mulai' => $request->get('jam_mulai'), 
             'jam_selesai' => $request->get('jam_selesai'),
             'uraian_lembur' => $request->get('uraian_lembur'),
-            'persetujuan_lembur' => "belum disetujui"
+            'persetujuan_id' => 1
         ]);
         return redirect('lembur');
     }
@@ -99,10 +100,10 @@ class LemburController extends Controller
             $persetujuan->tanggal_lembur = $request['tanggal_lembur'];
             $persetujuan->jam_mulai = $request['jam_mulai'];
             $persetujuan->jam_selesai = $request['jam_selesai'];
-            $persetujuan->persetujuan_lembur = "sudah disetujui";
+            $persetujuan->persetujuan_id = 2;
         }
         else
-            $persetujuan->persetujuan_lembur = "tidak disetujui";
+            $persetujuan->persetujuan_id = 3;
 
         $persetujuan->update();
 
@@ -118,13 +119,13 @@ class LemburController extends Controller
     public function rekapan()
     {
         if(Auth::user()->id_peran == 3) {
-            $query = ["status_presensi"=>"hadir", "email"=>Auth::user()->email];
+            $query = ["status_presensi_id"=>1, "email"=>Auth::user()->email];
             $data_presensi = presensi::where($query)->get();
             $data_lembur = lembur::where("email", "=", Auth::user()->email)->get();
             return view('lembur.rekap_user', array('data_lembur'=>$data_lembur, 'data_presensi'=>$data_presensi));
         }
         elseif(Auth::user()->id_peran == 1 OR Auth::user()->id_peran == 2) {
-            $query = ["status_presensi"=>"hadir"];
+            $query = ["status_presensi_id"=>1];
             $data_presensi = presensi::where($query)->get();
             $data_user = user::all();
             $data_lembur = lembur::all();

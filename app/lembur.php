@@ -14,7 +14,7 @@ class lembur extends Model
 		'tanggal_lembur', 
 		'jam_mulai', 
 		'jam_selesai', 
-		'persetujuan_lembur', 
+		'persetujuan_id', 
 		'uraian_lembur'
 	];
 }
