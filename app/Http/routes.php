@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::resource('/', 'HomeController');
 
 Route::get('contoh', function() {
 	return view('contoh');
@@ -74,6 +74,7 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 
 Route::get('datadiri', 'BiodataController@datadiri');
 
+
 Route::get('cetakbiodata', function(){
 	$auth = Auth::user()->email;
        
@@ -119,15 +120,49 @@ Route::resource('todolist', 'TodoListController');
 
 
 
+Route::get('portofolio', function() {
+	return view('pengembangan');
+});
 
+Route::get('proyek', function() {
+	return view('pengembangan');
+});
 
+Route::get('penugasan', function() {
+	return view('pengembangan');
+});
 
+Route::get('gaji', function() {
+	return view('pengembangan');
+});
 
+Route::get('cuti', function() {
+	return view('pengembangan');
+});
 
+Route::get('manajemen_rapat', function() {
+	return view('pengembangan');
+});
 
+Route::get('manajemen_proyek', function() {
+	return view('pengembangan');
+});
 
+Route::get('to_do_list', function() {
+	return view('pengembangan');
+});
 
+Route::get('penilaian_kinerja', function() {
+	return view('pengembangan');
+});
 
+Route::get('inventaris', function() {
+	return view('pengembangan');
+});
+
+Route::get('cetak_pdf', function() {
+	return view('pengembangan');
+});
 
 
 
@@ -166,10 +201,6 @@ Route::post('presensi/masuk', 'SubmitPresensiController@PresensiMasuk');
 
 Route::put('presensi/pulang/{email}', 'PresensiPulangController@PresensiPulang');
 
-Route::get('cetak_pdf', function() {
-	return view('/home');
-});
-
 Route::get('lembur', 'LemburController@index');
 
 Route::get('ajukan_lembur', 'LemburController@lembar_pengajuan');
@@ -182,4 +213,23 @@ Route::put('lembur_admin', 'LemburController@persetujuan_admin');
 
 Route::get('rekap_lembur', 'LemburController@rekapan');
 
+
 Route::get('penilaian_kinerja', 'PenilaianKinerjaController@index');
+
+Route::get('penilaian_kinerja/ubah_nilai/{email}', 'PenilaianKinerjaController@ubah_nilai');
+
+Route::put('penilaian_kinerja/ubah_nilai/{email}/{id}', 'PenilaianKinerjaController@simpan_nilai');
+
+Route::post('penilaian_kinerja/ubah_nilai/buat_nilai/{email}', 'PenilaianKinerjaController@buat_nilai');
+
+
+
+
+
+
+
+Route::resource('inventaris', 'InventarisController');
+
+Route::post('inventaris/store', 'InventarisController@store');
+
+Route::get('inventaris/show', 'InventarisController@show');

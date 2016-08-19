@@ -49,22 +49,22 @@
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="proyek"><i class="fa fa-table"></i><br>Manajemen<br>Proyek</a>
+				            			<a href="manajemen_proyek"><i class="fa fa-table"></i><br>Manajemen<br>Proyek</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="Belum_Jadi"><i class="fa fa-list-ul"></i><br>To-do-list</a>
+				            			<a href="to_do_list"><i class="fa fa-list-ul"></i><br>To-do-list</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="Belum_Jadi"><i class="fa fa-trophy"></i><br>Penilaian<br>Kerja</a>
+				            			<a href="penilaian_kinerja"><i class="fa fa-trophy"></i><br>Penilaian<br>Kinerja</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="Belum_Jadi"><i class="fa fa-book"></i><br>Inventaris</a>
+				            			<a href="inventaris"><i class="fa fa-book"></i><br>Inventaris</a>
 				            		</div>
 				            	</div>
 				            	<div class="col-md-2">
