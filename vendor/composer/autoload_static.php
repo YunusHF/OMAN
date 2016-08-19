@@ -75,12 +75,17 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
         'D' => 
         array (
             'Dotenv\\' => 7,
+            'Dompdf\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
         ),
         'C' => 
         array (
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
+        ),
+        'B' => 
+        array (
+            'Barryvdh\\DomPDF\\' => 16,
         ),
         'A' => 
         array (
@@ -199,6 +204,10 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -211,6 +220,10 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'Barryvdh\\DomPDF\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -218,6 +231,13 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Svg\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src',
+            ),
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 
@@ -247,6 +267,13 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
             ),
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phenx/php-font-lib/src',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\Common\\Inflector\\' => 
@@ -264,24 +291,35 @@ class ComposerStaticInit86d4a8bd67984d268a30e2f953d547e7
     );
 
     public static $classMap = array (
+        'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'CreateAnggotaKeluargaTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_111334_create_anggota_keluarga_table.php',
+        'CreateClientTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_024158_create_client_table.php',
         'CreateDivisiTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_233435_create_divisi_table.php',
         'CreateHariLiburKerjaTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_074005_create_hari_libur_kerja_table.php',
         'CreateJabatanTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_233530_create_jabatan_table.php',
-        'CreateKaryawan1Table' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_113319_create_karyawan1_table.php',
         'CreateKaryawanTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_113324_create_karyawan_table.php',
-        'CreateKeluargaTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_100559_create_keluarga_table.php',
+        'CreateKeluargaTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_140947_create_keluarga_table.php',
         'CreateLemburTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_074152_create_lembur_table.php',
+        'CreateManajemenProyekTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_024045_create_manajemen_proyek_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePendidikanTerakhirTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_233603_create_pendidikan_terakhir_table.php',
         'CreatePeranTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_030458_create_peran_table.php',
         'CreatePresensiTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_073543_Create_Presensi_Table.php',
+        'CreateProyekTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_024118_create_proyek_table.php',
         'CreateStatusKeluargaTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_15_104138_create_status_keluarga_table.php',
+        'CreateStatusPerkawinanTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_041853_create_status_perkawinan_table.php',
+        'CreateStatusTodoTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_024148_create_status_todo_table.php',
+        'CreateTodolistTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_18_004746_create_todolist_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'HTML5_Data' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Data.php',
+        'HTML5_InputStream' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/InputStream.php',
+        'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
+        'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
+        'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
