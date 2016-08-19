@@ -113,10 +113,8 @@
 	                	<h4>Statistik Absensi</h4>
 	                </div>
 
-	                <div class="panel-body" style="min-height: 170px;>
-	                	<form action="isi_aktifitas" method="post" accept-charset="utf-8" class="form-group">
-	                		
-	                	</form>
+	                <div class="panel-body" style="min-height: 170px;"">
+	                	<a href="{{url('/')}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
 	                </div>
 	            </div>
 	        </div>
