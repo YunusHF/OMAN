@@ -15,7 +15,7 @@ class CreateHariLiburKerjaTable extends Migration
         Schema::create('hari_libur_kerja', function (Blueprint $table) {
             $table->increments('id_libur');
             $table->date('tanggal_libur');
-            $table->string('keterangan_libur', 255);
+            $table->string('keterangan_libur', 255)->nullable();
         });
     }
 

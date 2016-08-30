@@ -3,26 +3,27 @@
 @section('konten')
 <div class="col-md-2">
     <div class="panel panel-default">
-	    <div class="panel-heading">
-	    	<h4>Pengajuan Lembur</h4>
+	    <div class="panel-heading" style="background-color: #b0e0a1;">
+	    	<h4>Menu</h4>
 	    </div>
 	    <div class="panel-body">
-	    	<button type="button" style="background-color: blue;"><a href="{{url('/ajukan_lembur')}}" style="color: #fff;"><i class="fa fa-envelope"></i><br>Ajukan lembur</a></button>
-	    </div>
+            <a href="{{url('/ajukan_lembur')}}"><button type="button" class="btn btn-info" style="color: #fff;"><i class="fa fa-envelope"></i><br>Ajukan lembur</button></a>
+            <a href="{{url('/lembur')}}"><button type="button" class="btn btn-warning">Kembali</button></a>
+        </div>
     </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-10">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color: #b0e0a1;">
         	<h4>Rekapan Lembur {{ Auth::user()->nama}}</h4>
         </div>
         <div class="panel-body">
-        	<?php $sudah = false; ?>
+        	<?php $sudah = false; $nomor = 0;?>
         	@if($data_lembur->isEmpty())
         		<h4>Anda tidak memiliki rekapan lembur</h4>
         	@elseif(!$data_lembur->isEmpty())
         		@foreach($data_lembur as $daftar_lembur)
-        			@if($daftar_lembur->persetujuan_lembur == "sudah disetujui")
+        			@if($daftar_lembur->persetujuan_id == 2)
         				@foreach($data_presensi as $daftar_presensi)
         					@if($daftar_lembur->tanggal_lembur == $daftar_presensi->tanggal_presensi)
         						<?php $sudah = true; ?>
@@ -36,6 +37,7 @@
         				<table class="table" style="text-align: left;">
         					<thead>
         						<tr style="border-style: none">
+                                    <th>Nomor</th>
         							<th>Uraian</th>
         							<th>Tanggal</th>
         							<th>Mulai</th>
@@ -48,10 +50,11 @@
         		@endif
 
         		@foreach($data_lembur as $daftar_lembur)
-        			@if($daftar_lembur->persetujuan_lembur == "sudah disetujui")
+        			@if($daftar_lembur->persetujuan_id == 2)
         				@foreach($data_presensi as $daftar_presensi)
         					@if($daftar_lembur->tanggal_lembur == $daftar_presensi->tanggal_presensi)
         						<tr style="border-style: none">
+                                    <td>{{ $nomor+=1 }}</td>
         							<td>{{ $daftar_lembur->uraian_lembur }}</td>
         							<td>{{ $daftar_lembur->tanggal_lembur }}</td>
         							<td>{{ $daftar_lembur->jam_mulai }}</td>
@@ -68,16 +71,6 @@
         			</div>
         		@endif
         	@endif
-        </div>
-    </div>
-</div>
-<div class="col-md-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-        	<h4>Rekap Lembur</h4>
-        </div>
-        <div class="panel-body">
-            <button type="button"><a href="{{url('/rekap_lembur')}}" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</a></button>
         </div>
     </div>
 </div>

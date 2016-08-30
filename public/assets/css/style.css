@@ -502,6 +502,11 @@ input[type="text"], [type="password"] {
     padding-bottom: 20px;
 }
 
+.icon {
+    height: 120px;
+    width: 120px;
+}
+
 .icon-bundar {
     background: #2e7144;
     height: 120px;
@@ -529,6 +534,11 @@ input[type="text"], [type="password"] {
 
 .panel {
     margin-top: 30px;
+    margin-bottom: -10px;
+}
+
+.panel-heading {
+    background-color: #69BD50;
 }
 
 .vresize {

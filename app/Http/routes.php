@@ -74,7 +74,6 @@ Route::get('relasi2/{id_keluarga}', function($id_keluarga){
 
 Route::get('datadiri', 'BiodataController@datadiri');
 
-
 Route::get('cetakbiodata', function(){
 	$auth = Auth::user()->email;
        
@@ -115,11 +114,6 @@ Route::resource('tambahkeluarga', 'TambahKeluargaController');
 
 Route::resource('todolist', 'TodoListController');
 
-
-
-
-
-
 Route::get('portofolio', function() {
 	return view('pengembangan');
 });
@@ -128,32 +122,31 @@ Route::get('proyek', function() {
 	return view('pengembangan');
 });
 
-Route::get('penugasan', function() {
-	return view('pengembangan');
+Route::get('dinas', function() {
+	return view('dinas.admin');
 });
 
-Route::get('gaji', function() {
-	return view('pengembangan');
-});
+// Route::get('gaji', function() {
+// 	return view('dinas.admin');
+// });
 
 Route::get('cuti', function() {
-	return view('pengembangan');
-});
-
-Route::get('manajemen_rapat', function() {
-	return view('pengembangan');
+	return view('cuti.form_cuti');
 });
 
 Route::get('manajemen_proyek', function() {
-	return view('pengembangan');
+	return view('proyek.form');
 });
 
 Route::get('to_do_list', function() {
-	return view('pengembangan');
-});
-
-Route::get('penilaian_kinerja', function() {
-	return view('pengembangan');
+	if(Auth::user()->id_peran == 1 || Auth::user()->id_peran == 2) {
+		$nama = Auth::user()->nama;
+		return view('todolist.tampil_admin', array('nama'=>$nama));
+	}
+	elseif(Auth::user()->id_peran == 3){
+		$nama = Auth::user()->nama;
+		return view('todolist.tampil_user', array('nama'=>$nama));
+	}
 });
 
 Route::get('inventaris', function() {
@@ -195,11 +188,15 @@ Route::get('cetak_pdf', function() {
 
 Route::get('presensi', 'PresensiController@index');
 
-Route::post('tampil_presensi', 'PresensiController@TampilPresensi');
+Route::get('tampil_presensi/{tahun}/{bulan}', 'PresensiController@TampilPresensi');
+
+Route::get('tampil_presensi/{email}/{tahun}/{bulan}', 'PresensiController@TampilPresensiAdmin');
 
 Route::post('presensi/masuk', 'SubmitPresensiController@PresensiMasuk');
 
 Route::put('presensi/pulang/{email}', 'PresensiPulangController@PresensiPulang');
+
+Route::put('presensi/isi_aktifitas', 'PresensiController@update');
 
 Route::get('lembur', 'LemburController@index');
 
@@ -215,6 +212,8 @@ Route::get('rekap_lembur', 'LemburController@rekapan');
 
 
 Route::get('penilaian_kinerja', 'PenilaianKinerjaController@index');
+
+Route::get('penilaian_kinerja/rekap_nilai/{email}/{tahun}', 'PenilaianKinerjaController@rekap_admin');
 
 Route::get('penilaian_kinerja/ubah_nilai/{email}', 'PenilaianKinerjaController@ubah_nilai');
 
@@ -233,6 +232,14 @@ Route::resource('inventaris', 'InventarisController');
 Route::post('inventaris/store', 'InventarisController@store');
 
 Route::get('inventaris/show', 'InventarisController@show');
+
+Route::resource('rapat', 'RapatController');
+
+Route::post('rapat/store', 'RapatController@store');
+
+Route::get('rapat/show', 'RapatController@show');
+
+Route::get('rapat/detail_rapat', 'RapatController@lihat_detail');
 
 Route::get('gaji', 'GajiController@index');
 

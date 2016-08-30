@@ -18,7 +18,7 @@ class CreateLemburTable extends Migration
             $table->date('tanggal_lembur');
             $table->time('jam_mulai');
             $table->time('jam_selesai');
-            $table->string('persetujuan_lembur', 255);
+            $table->integer('persetujuan_id');
             $table->string('uraian_lembur', 255);
         });
     }

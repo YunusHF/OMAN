@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
-use App\Karyawan;
-use App\TodoList;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class TodoListController extends Controller
+class PenugasanController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +20,18 @@ class TodoListController extends Controller
      */
     public function index()
     {
-        
+        if(Auth::user()->id_peran == 1 or Auth::user()->id_peran == 2) {
+            $data_user = user::all();
+            $data_nilai = penilaian_kinerja::all();
+            $data_aspek = aspek_kinerja::all();
+            return view('kinerja.tampil_admin', array('data_user'=>$data_user, 'data_nilai'=>$data_nilai, 'data_aspek'=>$data_aspek));
+        }
+        else {
+            $query = ['email'=>Auth::user()->email];
+            // $data_tugas = penilaian_kinerja::where($query)->get();
+            // $data_aspek = aspek_kinerja::all();
+            return view('penugasan.tampil_user');
+        }
     }
 
     /**
@@ -33,10 +41,7 @@ class TodoListController extends Controller
      */
     public function create()
     {
-        $karyawan = \App\Karyawan::all();
-
-        return view('todolist.create')->withKaryawan($karyawan);
-
+        //
     }
 
     /**

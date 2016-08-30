@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusPerkawinanTable extends Migration
+class CreateStatusPresensiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateStatusPerkawinanTable extends Migration
      */
     public function up()
     {
-        Schema::create('ref.status_perkawinan', function (Blueprint $table) {
-            $table->increments('id_status_perkawinan');
-            $table->string('status_perkawinan');
+        Schema::create('ref.status_presensi', function (Blueprint $table){
+            $table->increments('id_status_presensi');
+            $table->string('status_presensi');
         });
     }
 
@@ -25,6 +25,6 @@ class CreateStatusPerkawinanTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ref.status_perkawinan');
+        Schema::drop('ref.status_presensi');
     }
 }
