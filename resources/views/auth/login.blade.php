@@ -66,85 +66,90 @@
 
 @section('konten')
 
-        <!-- Form Login-->
-         <div class="presentation-container">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        &nbsp;
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-login">
-                            <h2><strong>Office Management<br>PT. Nufaza</strong></h2>
-                            <hr>
-                            <form role="form" method="POST" action="{{ url('/login') }}">
-                            {{ csrf_field() }}
+<!-- Form Login-->
+<div class="presentation-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                &nbsp;
+            </div>
+            <div class="col-md-6">
+                <div class="form-login">
+                    <h2><strong>Office Management<br>PT. Nufaza</strong></h2>
+                    <hr>
+                    <form role="form" method="POST" action="{{ url('/login') }}">
+                    {{ csrf_field() }}
 
-                                <!-- <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-1"><p>Email</p></div>
-                                            <div class="col-md-5"><p><input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                                @if ($errors->has('email'))
-                                                    <span class="help-block">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                @endif</p>
-                                            </div>
-                                        </div>
-                                    </div>                          
-                                </div> -->
-                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-1"><p>Email</p></div>
-                                            <div class="col-md-5"><p><input id="email" type="email" class="form-control" name="email">
-                                                @if ($errors->has('email'))
-                                                     <span class="help-block">
-                                                     <br>
-                                                     <strong>{{ $errors->first('email') }}</strong>
-                                                     </span>
-                                                @endif</p>
-                                            </div>
-                                        </div>
-                                    </div>                          
+                        <!-- <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-1"><p>Email</p></div>
+                                    <div class="col-md-5"><p><input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif</p>
+                                    </div>
                                 </div>
-
-                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-1"><p>Password</p></div>
-                                            <div class="col-md-5"><p><input id="password" type="password" class="form-control" name="password">
-                                                @if ($errors->has('password'))
-                                                     <span class="help-block">
-                                                     <br>
-                                                     <strong>{{ $errors->first('password') }}</strong>
-                                                     </span>
-                                                @endif</p>
-                                            </div>
-                                        </div>
-                                    </div>                          
+                            </div>                          
+                        </div> -->
+                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-1"><p>Email</p></div>
+                                    <div class="col-md-5"><p><input id="email" type="email" class="form-control" name="email">
+                                        @if ($errors->has('email'))
+                                             <span class="help-block">
+                                             <br>
+                                             <strong>{{ $errors->first('email') }}</strong>
+                                             </span>
+                                        @endif</p>
+                                    </div>
                                 </div>
-
-                                <!-- <div class="g-recaptcha col-md-6 col-sm-6" data-sitekey="6Lc_0f4SAAAAAF9ZA_d7Dxi9qRbPMMNW-tLSvhe6" style="margin:0 auto;"></div> -->
-                                <button>Login</button>
-                                <div class="col-md-3 col-sm-2">
-                                    &nbsp;
-                                </div>
-                            </form>
-                            <div class="col-md-6">
-                                <h6>OR</h6>
-                                <button class="btn btn-small" style="background-color: blue;"><a href="register" style="color: #fff">REGISTER</a></button>
-                            </div>
+                            </div>                          
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        &nbsp;
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-1"><p>Password</p></div>
+                                    <div class="col-md-5"><p><input id="password" type="password" class="form-control" name="password">
+                                        @if ($errors->has('password'))
+                                             <span class="help-block">
+                                             <br>
+                                             <strong>{{ $errors->first('password') }}</strong>
+                                             </span>
+                                        @endif</p>
+                                    </div>
+                                </div>
+                            </div>                          
+                        </div>
+
+                        <!-- <div class="g-recaptcha col-md-6 col-sm-6" data-sitekey="6Lc_0f4SAAAAAF9ZA_d7Dxi9qRbPMMNW-tLSvhe6" style="margin:0 auto;"></div> -->
+                        <button class="btn">Login</button>
+                        <div class="col-md-3 col-sm-2">
+                            &nbsp;
+                        </div>
+                    </form>
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="padding-top: 15px;">
+                            <p>Belum punya akun?</p>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="register" style="color: #fff">
+                                <button type="submit" class="btn-sm btn-primary">
+                                    <i class="fa fa-btn fa-user"></i> Register
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-         </div>
-
-        
-
+            <div class="col-md-3">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

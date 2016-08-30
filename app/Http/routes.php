@@ -126,9 +126,9 @@ Route::get('dinas', function() {
 	return view('dinas.admin');
 });
 
-Route::get('gaji', function() {
-	return view('dinas.admin');
-});
+// Route::get('gaji', function() {
+// 	return view('dinas.admin');
+// });
 
 Route::get('cuti', function() {
 	return view('cuti.form_cuti');
@@ -211,7 +211,9 @@ Route::put('lembur_admin', 'LemburController@persetujuan_admin');
 Route::get('rekap_lembur', 'LemburController@rekapan');
 
 
-Route::get('penilaian_kinerja/{tahun}', 'PenilaianKinerjaController@index');
+Route::get('penilaian_kinerja', 'PenilaianKinerjaController@index');
+
+Route::get('penilaian_kinerja/rekap_nilai/{email}/{tahun}', 'PenilaianKinerjaController@rekap_admin');
 
 Route::get('penilaian_kinerja/ubah_nilai/{email}', 'PenilaianKinerjaController@ubah_nilai');
 
