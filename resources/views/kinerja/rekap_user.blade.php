@@ -14,6 +14,14 @@
 		elseif($i == 12) $bulanIndo = "Desember";
 		return $bulanIndo;
 	}
+
+	$tahun_awal = 9999;
+    foreach($data_nilai as $_nilai){
+        $tahun_nilai = strtotime($_nilai->tanggal_kinerja);
+        if($tahun_awal > date("Y", $tahun_nilai)) {
+            $tahun_awal = date("Y", $tahun_nilai);
+        }
+    }
 ?>
 @extends('layouts.tampilan')
 
@@ -24,6 +32,14 @@
         	<h3>Menu</h3>
         </div>
         <div class="panel-body">
+        	<div class="dropdown">
+				<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">{{ $tahun }}<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					@for($i=date("Y"); $i>=$tahun_awal; $i--)
+                        <li><a href="{{$i}}">{{$i}}</a></li>
+                    @endfor
+				</ul>
+			</div>
 			<a href="{{url('/')}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
         </div>
     </div>
@@ -31,35 +47,42 @@
 <div class="col-md-10">
     <div class="panel panel-default">
         <div class="panel-heading" style="background-color: #b0e0a1;">
-        	<h3>Penilaian Kinerja Bulan {{ BulanIndo($bulan)}}  {{ $tahun }}</h3>
+        	<h3>Penilaian Kinerja</h3>
         </div>
         <div class="panel-body">
         	<div class="col-md-12">
-	        	<table class="table table-responsive" style="text-align: left">
+	        	<table class="table table-responsive" style="text-align: center">
 	        		<thead>
 	        			<tr style='border-style: none;'>
-	        				<th>Nomor<br>&nbsp</th>
-	        				<th>Nama<br>&nbsp</th>
+	        				<th style="text-align: center;">Nomor<br>&nbsp</th>
+	        				<th style="text-align: left;">Bulan<br>&nbsp</th>
 	        					@foreach ($data_aspek as $aspek)
-	        						<th>{{ $aspek->aspek_kinerja }}<br>( {{$aspek->bobot_nilai}}% )</th>
+	        						<th style="text-align: center;">{{ $aspek->aspek_kinerja }}<br>({{$aspek->bobot_nilai}}%)</th>
 	        					@endforeach
+	        				<th style="text-align: center;">Skor Total<br>&nbsp</th>
 	        			</tr>
 	        		</thead>
 	        		<tbody>
-	        			<?php $nomor = 0; ?>
-	        			@foreach($data_user as $user)
+	        			<?php
+	        				$nomor = 0;
+	        				$skor_total = 0;
+	        			?>
+        				@for($i=1; $i<=12; $i++)
 	        			<tr style='border-style: none;'>
-
 	        				<td>{{ $nomor+=1 }}</td>
-	        				<td>{{ $user->nama }}</td>
-	        				@foreach ($data_aspek as $aspek)
+       						<td style="text-align: left;">{{ BulanIndo($i) }}</td>
+	        				@foreach($data_aspek as $aspek)
 	        					<td>
 	        						<?php $ada_nilai = false ?>
 	        						@foreach ($data_nilai as $nilai)
-	        							<?php $bulan_tahun_kinerja = strtotime($nilai->tanggal_kinerja); $tanggal_kinerja = date("Y-m", $bulan_tahun_kinerja); ?>
-	        							@if ($nilai->aspek_kinerja_id == $aspek->id_aspek_kinerja && $nilai->email == $user->email && $tanggal_kinerja == $bulan_tahun)
+	        							<?php $tanggal = strtotime($nilai->tanggal_kinerja); ?>
+	        							@if ($nilai->aspek_kinerja_id == $aspek->id_aspek_kinerja && BulanIndo(date("m", $tanggal)) == BulanIndo($i) && date("Y", $tanggal) == $tahun)
+	        								
 	        								{{ $nilai->nilai_kinerja }}
-	        								<?php $ada_nilai = true ?>
+	        								<?php
+	        									$ada_nilai = true;
+	        									$skor_total += $aspek->bobot_nilai/100*$nilai->nilai_kinerja ;
+	        								?>
 	        							@endif
 	        						@endforeach
 	        						@if ($ada_nilai == false)
@@ -67,11 +90,10 @@
 	        						@endif
 	        					</td>
 	        				@endforeach
-	        				<!-- <td><button class="btn btn-info" type="submit" style="margin-top: 0px; background-color: #2e7144; color: white; padding-right: 10px;">Ubah</button></td> -->
-	        				<td><a href="penilaian_kinerja/ubah_nilai/{{$user->email}}" class="btn btn-info" type="submit" style="margin-top: 0px; background-color: #2e7144; color: white; padding-right: 10px;">Ubah</a></td>
-	        				<td><a href="penilaian_kinerja/rekap_nilai/{{$user->email}}/{{$tahun}}" class="btn btn-info" type="submit" style="margin-top: 0px; background-color: #2e7144; color: white; padding-right: 10px;">Rekap</a></td>
+	        				<td>{{$skor_total}}</td>
+	        				<?php $skor_total = 0; ?>
 	        			</tr>
-		        		@endforeach
+        				@endfor
 	        		</tbody>
 	        	</table>
         	</div>

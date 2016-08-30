@@ -7,8 +7,8 @@
 	    	<h4>Menu</h4>
 	    </div>
 	    <div class="panel-body">
-	    	<button type="button" style="background-color: blue;"><a href="{{url('/ajukan_lembur')}}" style="color: #fff;"><i class="fa fa-envelope"></i><br>Ajukan lembur</a></button>
-	    	<button type="button"><a href="{{url('/rekap_lembur')}}" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</a></button>
+	    	<a href="{{url('/ajukan_lembur')}}"><button type="button" class="btn btn-info" style="color: #fff;"><i class="fa fa-envelope"></i><br>Ajukan lembur</button></a>
+	    	<a href="{{url('/rekap_lembur')}}"><button type="button" class="btn" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</button></a>
 	    	<a href="{{url('/')}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
 	    </div>
     </div>

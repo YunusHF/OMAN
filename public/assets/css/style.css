@@ -502,6 +502,11 @@ input[type="text"], [type="password"] {
     padding-bottom: 20px;
 }
 
+.icon {
+    height: 120px;
+    width: 120px;
+}
+
 .icon-bundar {
     background: #2e7144;
     height: 120px;

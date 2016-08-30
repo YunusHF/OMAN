@@ -7,7 +7,7 @@
 	    	<h4>Menu</h4>
 	    </div>
 	    <div class="panel-body">
-            <a href="{{url('/rekap_lembur')}}" style="color: #fff;"><button type="button"><i class="fa fa-print"></i><br>Lihat Rekapan</button></a>
+	    	<a href="{{url('/rekap_lembur')}}"><button type="button" class="btn" style="color: #fff;"><i class="fa fa-print"></i><br>Lihat Rekapan</button></a>
             <a href="{{url('/lembur')}}" style="color: #fff;"><button type="button" class="btn btn-warning">Kembali</button></a>
         </div>
     </div>
@@ -49,7 +49,7 @@
 	            		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	            	</div>
 	            	<div class="col-md-4">
-	              		<button type="submit">Submit</button>
+	              		<button type="submit" class="btn">Submit</button>
 	            	</div>
 	            	<div class="col-md-4">
 	            		<!--  -->
