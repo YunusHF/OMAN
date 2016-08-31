@@ -32,9 +32,9 @@
 				            	</div>
 				            	<div class="col-md-2">
 				            		<div class="icon-bundar">
-				            			<a href="dinas">
+				            			<a href="penugasan">
 						            		<div class="icon">
-				            					<i class="fa fa-plane"></i><br>Penugasan/<br>Dinas
+				            					<i class="fa fa-plane"></i><br>Penugasan
 				            				</div>
 				            			</a>
 				            		</div>

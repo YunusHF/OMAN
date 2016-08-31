@@ -122,9 +122,7 @@ Route::get('proyek', function() {
 	return view('pengembangan');
 });
 
-Route::get('dinas', function() {
-	return view('dinas.admin');
-});
+Route::get('penugasan', 'PenugasanController@index');
 
 // Route::get('gaji', function() {
 // 	return view('dinas.admin');
